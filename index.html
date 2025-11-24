@@ -37,6 +37,10 @@
             background-color: #3B82F6; 
             background-image: linear-gradient(135deg, #3B82F6 0%, #1d4ed8 100%);
         }
+        /* 후기 슬라이더를 위한 CSS */
+        .testimonial-fade {
+            transition: opacity 1s ease-in-out;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -182,7 +186,7 @@
             </div>
         </section>
 
-        <!-- 4. Social Proof Section (변경된 내용 적용) -->
+        <!-- 4. Social Proof Section (후기 슬라이더 적용) -->
         <section class="py-20 bg-maljaram-primary/5">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-lg font-semibold text-maljaram-primary uppercase tracking-wider mb-8">Social Proof & Trust</h2>
@@ -199,21 +203,22 @@
                     </div>
                 </div>
                 
-                <!-- Testimonial -->
-                <div class="bg-white p-8 rounded-xl shadow-2xl border-l-4 border-maljaram-accent">
-                    <i class="fa-solid fa-quote-left text-3xl text-gray-300 mb-4"></i>
-                    <p class="text-xl italic text-gray-800 leading-relaxed">
-                        "처음에는 망설였지만, 아이가 매주 '선생님 만나러 가자'고 조를 정도로 즐거워합니다. 덕분에 말이 트이고 눈맞춤도 훨씬 자연스러워졌어요."
-                    </p>
-                    <p class="mt-4 text-maljaram-primary font-semibold">- 이*희 (5세 자녀 부모)</p>
+                <!-- Testimonial Slider Area -->
+                <div class="bg-white p-8 rounded-xl shadow-2xl border-l-4 border-maljaram-accent relative min-h-[180px] flex items-center justify-center overflow-hidden">
+                    <i class="fa-solid fa-quote-left text-3xl text-gray-300 absolute top-6 left-6 z-0"></i>
+                    <!-- Slider Content Wrapper -->
+                    <div id="testimonial-slider" class="relative w-full text-center testimonial-fade opacity-0 z-10">
+                        <!-- Content will be injected by JS -->
+                    </div>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <!-- JavaScript for Mobile Menu Toggle -->
+    <!-- JavaScript for Mobile Menu Toggle and Testimonial Slider -->
     <script>
+        // Mobile Menu Toggle Logic
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIconOpen = document.getElementById('menu-icon-open');
@@ -228,6 +233,103 @@
             menuIconOpen.classList.toggle('hidden');
             menuIconClose.classList.toggle('hidden');
         });
+
+        // --- Testimonial Slider Logic ---
+        
+        // 1. 후기 데이터 배열 (10가지로 확장)
+        const testimonials = [
+            // 1. 기존 후기 (언어/소통)
+            {
+                quote: "처음에는 망설였지만, 아이가 매주 '선생님 만나러 가자'고 조를 정도로 즐거워합니다. 덕분에 말이 트이고 눈맞춤도 훨씬 자연스러워졌어요.",
+                author: "이*희 (5세 자녀 부모)"
+            },
+            // 2. 기존 후기 (정서/놀이)
+            {
+                quote: "분노 조절이 안 되어 집안 분위기가 힘들었는데, 놀이치료 후 아이가 자신의 감정을 말로 표현하는 법을 배워 가족 모두가 행복해졌습니다.",
+                author: "김*진 (4세 자녀 부모)"
+            },
+            // 3. 기존 후기 (사회성/그룹)
+            {
+                quote: "소극적이던 아이가 그룹 치료를 통해 학교생활에 자신감을 얻었습니다. 새로운 도전에 용기를 갖게 되었고 친구들과 잘 어울립니다.",
+                author: "최*영 (7세 자녀 부모)"
+            },
+            // 4. 새로운 후기 (미술 심리)
+            {
+                quote: "말로 표현하지 못하던 내면의 불안감을 그림을 통해 안전하게 표출했습니다. 아이의 심리가 안정되니 밤에 잠도 잘 자고 밝아졌어요.",
+                author: "박*연 (6세 자녀 부모)"
+            },
+            // 5. 새로운 후기 (조음/발음)
+            {
+                quote: "친구들이 아이의 말을 못 알아들어서 속상했는데, 3개월 만에 발음이 명확해졌습니다. 이제 당당하게 대화하는 아이를 보니 정말 뿌듯합니다.",
+                author: "한*수 (8세 자녀 부모)"
+            },
+            // 6. 새로운 후기 (자존감/자신감)
+            {
+                quote: "늘 주눅 들어 있던 아이가 치료실에 갈 때마다 자신감이 붙어옵니다. 선생님이 아이의 강점을 찾아 격려해 주신 덕분입니다.",
+                author: "정*민 (9세 자녀 부모)"
+            },
+            // 7. 새로운 후기 (부모 교육 연계)
+            {
+                quote: "아이뿐만 아니라 부모 교육을 통해 가정에서 어떻게 상호작용해야 할지 배웠습니다. 치료실에서의 변화가 집에서도 이어지니 효과가 두 배입니다.",
+                author: "윤*아 (5세 자녀 부모)"
+            },
+            // 8. 새로운 후기 (청소년 정서)
+            {
+                quote: "사춘기로 접어들면서 대화가 단절되었는데, 전문가의 도움으로 아이의 마음을 이해하게 되었습니다. 관계 회복의 중요한 전환점이 되었습니다.",
+                author: "이*철 (14세 자녀 부모)"
+            },
+            // 9. 새로운 후기 (집중력/행동)
+            {
+                quote: "앉아있는 것조차 힘들었던 아이가 이제는 놀이에 집중하고 과제도 스스로 시작합니다. 행동 변화가 눈에 띄게 나타나 놀랍습니다.",
+                author: "오*지 (6세 자녀 부모)"
+            },
+            // 10. 새로운 후기 (첫 시작의 망설임)
+            {
+                quote: "치료를 시작하기까지 1년을 고민했는데, 상담 후 늦지 않았다는 확신을 얻었습니다. 불안했던 시작을 용기로 바꿔주셔서 감사합니다.",
+                author: "신*혜 (3세 자녀 부모)"
+            }
+        ];
+
+        let currentTestimonialIndex = 0;
+        const sliderElement = document.getElementById('testimonial-slider');
+
+        // 후기 내용을 업데이트하는 함수
+        function updateTestimonial(index) {
+            const t = testimonials[index];
+            sliderElement.innerHTML = `
+                <p class="text-xl italic text-gray-800 leading-relaxed mb-4">
+                    ${t.quote}
+                </p>
+                <p class="mt-4 text-maljaram-primary font-semibold">- ${t.author}</p>
+            `;
+        }
+
+        // 다음 후기로 전환하는 함수 (Fade In/Out 효과 포함)
+        function nextTestimonial() {
+            // Fade out
+            sliderElement.classList.remove('opacity-100');
+            sliderElement.classList.add('opacity-0');
+
+            setTimeout(() => {
+                // Change content after fading out
+                currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
+                updateTestimonial(currentTestimonialIndex);
+                
+                // Fade in
+                sliderElement.classList.remove('opacity-0');
+                sliderElement.classList.add('opacity-100');
+            }, 1000); // 1000ms (1초)는 CSS transition 시간과 일치해야 합니다.
+        }
+
+        // 초기 로드 시 첫 번째 후기 표시
+        window.onload = function() {
+            updateTestimonial(currentTestimonialIndex);
+            sliderElement.classList.add('opacity-100');
+            
+            // 5초 간격으로 슬라이드 전환 시작
+            setInterval(nextTestimonial, 5000); 
+        }
+
     </script>
 </body>
 </html>
