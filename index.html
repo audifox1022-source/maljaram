@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>말자람터 언어심리 연구소</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons (Hamburger Menu) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJ8g3gFAJg/iQCHKKK7m7gD5N5z9G2z0zPz5k0p45f3q1Vj1e5F5N5z5G5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Custom Tailwind Configuration for Colors and Fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'maljaram-primary': '#3B82F6', // 신뢰와 전문성을 상징하는 블루 계열
+                        'maljaram-accent': '#10B981',  // 성장과 치유를 상징하는 에메랄드 그린 계열
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 기본 폰트 적용 및 전역 스타일 */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1f2937; /* Gray-800 */
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Navigation Bar (GNB) -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="/" class="text-2xl font-extrabold text-maljaram-primary tracking-tight">
+                        말자람터 연구소
+                    </a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex md:space-x-8 items-center">
+                    <a href="/about" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg">소개</a>
+                    <a href="/programs" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg">프로그램</a>
+                    <a href="/experts" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg">전문가/자료실</a>
+                    <!-- CTA Button -->
+                    <a href="/contact" class="px-5 py-2 text-sm font-semibold rounded-full text-white bg-maljaram-accent hover:bg-emerald-600 transition duration-300 shadow-md hover:shadow-lg">
+                        1:1 상담/예약
+                    </a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-maljaram-primary" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">메인 메뉴 열기</span>
+                        <i class="fa-solid fa-bars h-6 w-6" id="menu-icon-open"></i>
+                        <i class="fa-solid fa-xmark h-6 w-6 hidden" id="menu-icon-close"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="/about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">소개</a>
+                <a href="/programs" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">프로그램</a>
+                <a href="/experts" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">전문가/자료실</a>
+                <a href="/contact" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-maljaram-primary text-center hover:bg-blue-700">1:1 상담/예약</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Step 2 Implementation) -->
+    <header class="relative overflow-hidden pt-20 pb-32 sm:py-32 lg:pt-40 lg:pb-52">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0">
+            <img class="w-full h-full object-cover" 
+                 src="https://source.unsplash.com/random/1600x900/?child,parent,play,therapy" 
+                 alt="아이와 부모가 함께 놀이하는 따뜻한 치료실 이미지">
+            <!-- Darker Overlay for Text Readability -->
+            <div class="absolute inset-0 bg-gray-900 opacity-60"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <!-- H1: 헤드라인 -->
+            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight mb-4 drop-shadow-lg leading-tight">
+                우리 아이의 숨겨진 잠재력, <span class="text-maljaram-accent">'말자람터'</span>에서 꽃피우세요.
+            </h1>
+            
+            <!-- P: 서브 텍스트 -->
+            <p class="mt-4 text-lg sm:text-xl lg:text-2xl font-light max-w-3xl mx-auto drop-shadow-md">
+                언어치료, 놀이치료, 미술심리. 전문가의 따뜻한 시선과 과학적 프로그램으로 <br class="hidden sm:inline">우리 아이의 건강한 성장을 돕습니다.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="mt-12 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <!-- CTA 1 (주요): Accent Color -->
+                <a href="/diagnosis" class="inline-flex justify-center items-center px-8 py-4 text-lg font-bold rounded-xl text-white bg-maljaram-accent hover:bg-emerald-600 transition duration-300 shadow-xl transform hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-maljaram-accent focus:ring-opacity-50">
+                    우리 아이 발달 진단 테스트 시작
+                </a>
+                
+                <!-- CTA 2 (보조): Primary Color Line -->
+                <a href="/programs" class="inline-flex justify-center items-center px-8 py-4 text-lg font-bold rounded-xl text-white border-2 border-maljaram-primary bg-transparent hover:bg-maljaram-primary transition duration-300 shadow-xl transform hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-maljaram-primary focus:ring-opacity-50">
+                    말자람터 치료 프로그램 자세히 보기
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Placeholder for remaining content (Problem, Features, Social Proof) -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <section class="text-center">
+            <h2 class="text-3xl font-extrabold text-gray-900 mb-8">나머지 섹션이 여기에 위치합니다.</h2>
+            <p class="text-gray-600">
+                (Problem & Solution, Key Features, Social Proof 등 Step 2의 나머지 상세 기획 섹션들이 이어집니다.)
+            </p>
+        </section>
+    </main>
+
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        mobileMenuButton.addEventListener('click', () => {
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+            
+            // Toggle icons
+            menuIconOpen.classList.toggle('hidden');
+            menuIconClose.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
