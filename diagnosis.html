@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>말자람터 | 발달 진단 테스트</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Custom Tailwind Configuration for Colors and Fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'maljaram-primary': '#3B82F6', // 신뢰와 전문성을 상징하는 블루 계열
+                        'maljaram-accent': '#10B981',  // 성장과 치유를 상징하는 에메랄드 그린 계열
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 기본 폰트 적용 및 전역 스타일 */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1f2937; /* Gray-800 */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+    <!-- Navigation Bar (GNB) - Reused from index.html -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="/" class="text-2xl font-extrabold text-maljaram-primary tracking-tight">
+                        말자람터 연구소
+                    </a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex md:space-x-8 items-center">
+                    <a href="/about" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg">소개</a>
+                    <a href="/programs" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg">프로그램</a>
+                    <a href="/experts" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg">전문가/자료실</a>
+                    <!-- CTA Button -->
+                    <a href="/contact" class="px-5 py-2 text-sm font-semibold rounded-full text-white bg-maljaram-accent hover:bg-emerald-600 transition duration-300 shadow-md hover:shadow-lg">
+                        1:1 상담/예약
+                    </a>
+                </div>
+                <!-- Mobile Menu Button (JS logic included below) -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-maljaram-primary" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">메인 메뉴 열기</span>
+                        <i class="fa-solid fa-bars h-6 w-6" id="menu-icon-open"></i>
+                        <i class="fa-solid fa-xmark h-6 w-6 hidden" id="menu-icon-close"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="/about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">소개</a>
+                <a href="/programs" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">프로그램</a>
+                <a href="/experts" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">전문가/자료실</a>
+                <a href="/contact" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-maljaram-primary text-center hover:bg-blue-700">1:1 상담/예약</a>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="flex-grow">
+        <div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <p class="text-maljaram-accent font-semibold text-lg uppercase tracking-wider">자가 진단 체크리스트</p>
+                <!-- H1: 헤더 카피 - 이제 5가지 질문입니다! -->
+                <h1 class="mt-2 text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
+                    3분 발달 체크, 우리 아이에게 맞는 치료의 방향은?
+                </h1>
+                <p class="mt-4 text-xl text-gray-500">
+                    간단한 <span class="font-bold text-maljaram-primary">5가지 질문</span>을 통해 전문가 상담 전, 아이의 주된 어려움을 파악해 보세요.
+                </p>
+            </div>
+
+            <!-- Diagnosis Form (Simple Card Layout) -->
+            <div id="diagnosis-form" class="bg-white p-8 sm:p-10 rounded-3xl shadow-2xl border border-gray-100">
+                <form id="assessment-form">
+                    
+                    <!-- Question 1: Child's Age (0세~19세 확장) -->
+                    <div class="mb-8 p-6 bg-gray-50 rounded-xl">
+                        <label for="child_age" class="block text-lg font-bold text-maljaram-primary mb-3">1. 우리 아이의 현재 연령대는 어떻게 되나요?</label>
+                        <select id="child_age" name="child_age" required
+                                class="mt-1 block w-full pl-3 pr-10 py-3 text-base border-gray-300 focus:outline-none focus:ring-maljaram-primary focus:border-maljaram-primary sm:text-lg rounded-lg shadow-sm">
+                            <option value="">연령대 선택 (0세 ~ 19세)</option>
+                            <option value="0to2">0세 ~ 만 2세 (영아기)</option>
+                            <option value="3to5">만 3세 ~ 만 5세 (미취학 아동)</option>
+                            <option value="6to8">만 6세 ~ 만 8세 (초등 저학년)</option>
+                            <option value="9to12">만 9세 ~ 만 12세 (초등 고학년)</option>
+                            <option value="13to19">만 13세 ~ 만 19세 (청소년)</option>
+                        </select>
+                    </div>
+
+                    <!-- Question 2: Primary Concern (다양한 영역 확장) -->
+                    <div class="mb-8 p-6 bg-gray-50 rounded-xl">
+                        <p class="text-lg font-bold text-maljaram-primary mb-4">2. 아이가 가장 어려움을 겪는 주된 영역은 무엇인가요? (중복 선택 가능)</p>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <!-- Option 1: Language -->
+                            <label class="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 cursor-pointer">
+                                <input type="checkbox" name="concern" value="language" class="form-checkbox h-5 w-5 text-maljaram-accent rounded border-gray-300 focus:ring-maljaram-accent">
+                                <span class="text-gray-700 font-medium">말(언어) 발달 및 발음</span>
+                            </label>
+                            <!-- Option 2: Emotional/Social -->
+                            <label class="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 cursor-pointer">
+                                <input type="checkbox" name="concern" value="emotional" class="form-checkbox h-5 w-5 text-maljaram-accent rounded border-gray-300 focus:ring-maljaram-accent">
+                                <span class="text-gray-700 font-medium">분리 불안 및 사회성</span>
+                            </label>
+                            <!-- Option 3: Sensory/Creativity -->
+                            <label class="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 cursor-pointer">
+                                <input type="checkbox" name="concern" value="sensory" class="form-checkbox h-5 w-5 text-maljaram-accent rounded border-gray-300 focus:ring-maljaram-accent">
+                                <span class="text-gray-700 font-medium">예민함 및 정서 표현</span>
+                            </label>
+                            <!-- Option 4: Cognition/Learning -->
+                            <label class="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 cursor-pointer">
+                                <input type="checkbox" name="concern" value="cognition" class="form-checkbox h-5 w-5 text-maljaram-accent rounded border-gray-300 focus:ring-maljaram-accent">
+                                <span class="text-gray-700 font-medium">학습 및 인지 능력</span>
+                            </label>
+                            <!-- Option 5: Motor Skills -->
+                            <label class="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 cursor-pointer">
+                                <input type="checkbox" name="concern" value="motor" class="form-checkbox h-5 w-5 text-maljaram-accent rounded border-gray-300 focus:ring-maljaram-accent">
+                                <span class="text-gray-700 font-medium">미세 운동 및 신체 발달</span>
+                            </label>
+                            <!-- Option 6: Behavioral Issues -->
+                            <label class="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 cursor-pointer">
+                                <input type="checkbox" name="concern" value="behavioral" class="form-checkbox h-5 w-5 text-maljaram-accent rounded border-gray-300 focus:ring-maljaram-accent">
+                                <span class="text-gray-700 font-medium">주의력 및 행동 문제</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Question 3: Common Behaviors (Radio Button - 5가지 확장) -->
+                    <div class="mb-8 p-6 bg-gray-50 rounded-xl">
+                        <p class="text-lg font-bold text-maljaram-primary mb-4">3. 다음 중 아이에게서 가장 자주 관찰되는 행동 한 가지를 선택해 주세요.</p>
+                        <div class="space-y-3">
+                            <!-- Behavior 1: Language delay/issues -->
+                            <label class="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 cursor-pointer">
+                                <input type="radio" name="behavior" value="words" class="form-radio h-5 w-5 text-maljaram-accent border-gray-300 focus:ring-maljaram-accent">
+                                <span class="text-gray-700 font-medium">또래보다 단어나 문장을 늦게 말하거나 발음이 부정확합니다.</span>
+                            </label>
+                            <!-- Behavior 2: Emotional outbursts -->
+                            <label class="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 cursor-pointer">
+                                <input type="radio" name="behavior" value="frustration" class="form-radio h-5 w-5 text-maljaram-accent border-gray-300 focus:ring-maljaram-accent">
+                                <span class="text-gray-700 font-medium">자신의 뜻대로 되지 않으면 쉽게 짜증내거나 물건을 던집니다. (감정 조절)</span>
+                            </label>
+                            <!-- Behavior 3: Focus/Attention -->
+                            <label class="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 cursor-pointer">
+                                <input type="radio" name="behavior" value="focus" class="form-radio h-5 w-5 text-maljaram-accent border-gray-300 focus:ring-maljaram-accent">
+                                <span class="text-gray-700 font-medium">놀이나 학습 시 집중 시간이 짧고 쉽게 산만해집니다. (주의력)</span>
+                            </label>
+                            <!-- Behavior 4: Social interaction -->
+                            <label class="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 cursor-pointer">
+                                <input type="radio" name="behavior" value="contact" class="form-radio h-5 w-5 text-maljaram-accent border-gray-300 focus:ring-maljaram-accent">
+                                <span class="text-gray-700 font-medium">눈 맞춤이나 상호작용이 적고, 또래와 잘 어울리지 못합니다. (사회성)</span>
+                            </label>
+                            <!-- Behavior 5: Motor/Movement -->
+                            <label class="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 cursor-pointer">
+                                <input type="radio" name="behavior" value="movement" class="form-radio h-5 w-5 text-maljaram-accent border-gray-300 focus:ring-maljaram-accent">
+                                <span class="text-gray-700 font-medium">몸의 움직임이 어색하거나, 가만히 있지 못하고 계속 움직입니다. (운동/감각)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- New Question 4: Emotional Intensity -->
+                    <div class="mb-8 p-6 bg-gray-50 rounded-xl">
+                        <p class="text-lg font-bold text-maljaram-primary mb-4">4. 아이가 슬픔이나 분노 등 강한 감정을 표현할 때의 특징은 무엇인가요?</p>
+                        <div class="space-y-3">
+                            <label class="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 cursor-pointer">
+                                <input type="radio" name="intensity" value="normal" class="form-radio h-5 w-5 text-maljaram-accent border-gray-300 focus:ring-maljaram-accent">
+                                <span class="text-gray-700 font-medium">감정을 표현하지만, 보통의 아이들처럼 비교적 빨리 가라앉습니다.</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 cursor-pointer">
+                                <input type="radio" name="intensity" value="high" class="form-radio h-5 w-5 text-maljaram-accent border-gray-300 focus:ring-maljaram-accent">
+                                <span class="text-gray-700 font-medium">감정의 강도가 매우 크고, 스스로 조절하지 못하며, 분노 발작처럼 오래 지속됩니다.</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 cursor-pointer">
+                                <input type="radio" name="intensity" value="low" class="form-radio h-5 w-5 text-maljaram-accent border-gray-300 focus:ring-maljaram-accent">
+                                <span class="text-gray-700 font-medium">감정 표현이 거의 없거나, 상황에 맞지 않게 무표정/무감각하게 반응합니다.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- New Question 5: Parental Concern Scale -->
+                    <div class="mb-8 p-6 bg-gray-50 rounded-xl">
+                        <p class="text-lg font-bold text-maljaram-primary mb-4">5. 현재 아이의 발달 상황에 대해 부모님은 어느 정도로 우려하고 계신가요?</p>
+                        <div class="mt-2 grid grid-cols-5 gap-4">
+                            <!-- Scale 1 to 5 -->
+                            <label class="flex flex-col items-center p-3 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 cursor-pointer">
+                                <input type="radio" name="concern_level" value="1" class="form-radio h-5 w-5 text-maljaram-accent border-gray-300 focus:ring-maljaram-accent">
+                                <span class="mt-1 text-sm font-medium text-gray-700">1<br>(거의 없음)</span>
+                            </label>
+                            <label class="flex flex-col items-center p-3 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 cursor-pointer">
+                                <input type="radio" name="concern_level" value="2" class="form-radio h-5 w-5 text-maljaram-accent border-gray-300 focus:ring-maljaram-accent">
+                                <span class="mt-1 text-sm font-medium text-gray-700">2<br>(약간 우려)</span>
+                            </label>
+                            <label class="flex flex-col items-center p-3 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 cursor-pointer">
+                                <input type="radio" name="concern_level" value="3" class="form-radio h-5 w-5 text-maljaram-accent border-gray-300 focus:ring-maljaram-accent">
+                                <span class="mt-1 text-sm font-medium text-gray-700">3<br>(보통 수준)</span>
+                            </label>
+                            <label class="flex flex-col items-center p-3 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 cursor-pointer">
+                                <input type="radio" name="concern_level" value="4" class="form-radio h-5 w-5 text-maljaram-accent border-gray-300 focus:ring-maljaram-accent">
+                                <span class="mt-1 text-sm font-medium text-gray-700">4<br>(상당히 우려)</span>
+                            </label>
+                            <label class="flex flex-col items-center p-3 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 cursor-pointer">
+                                <input type="radio" name="concern_level" value="5" class="form-radio h-5 w-5 text-maljaram-accent border-gray-300 focus:ring-maljaram-accent">
+                                <span class="mt-1 text-sm font-medium text-gray-700">5<br>(매우 심각)</span>
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <!-- Submit Button & CTA -->
+                    <div class="mt-10 text-center">
+                        <button type="button" onclick="submitAssessment()"
+                                class="w-full sm:w-auto inline-flex justify-center items-center px-12 py-4 text-xl font-bold rounded-xl text-white bg-maljaram-accent hover:bg-emerald-600 transition duration-300 shadow-xl transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-maljaram-accent focus:ring-opacity-50">
+                            <i class="fa-solid fa-clipboard-check mr-3"></i>
+                            테스트 결과 확인 및 1:1 상담 신청
+                        </button>
+                    </div>
+
+                </form>
+
+                <!-- Result Message Area (Hidden by default) -->
+                <div id="result-message" class="hidden mt-10 p-6 sm:p-8 bg-maljaram-primary/10 border-l-4 border-maljaram-primary rounded-lg text-center">
+                    <h3 class="text-2xl font-bold text-maljaram-primary mb-3">진단 체크 완료!</h3>
+                    <p class="text-gray-700 text-lg mb-6">작성해 주신 내용을 바탕으로, 우리 아이의 발달 단계를 면밀히 검토해 볼 필요가 있습니다. 가장 정확한 진단은 전문가와의 비공개 상담을 통해 이루어집니다.</p>
+                    <a href="/contact" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-maljaram-primary hover:bg-blue-700 transition duration-300">
+                        <i class="fa-solid fa-calendar-check mr-2"></i>
+                        1:1 상담 예약 페이지로 이동
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Information Section -->
+            <div class="mt-12 p-6 bg-blue-50 border border-blue-200 rounded-xl text-center">
+                <p class="text-maljaram-primary font-semibold text-lg">
+                    <i class="fa-solid fa-shield-halved mr-2"></i>
+                    **안내:** 본 체크리스트는 비공식적인 참고 자료이며, 모든 정보는 법적 의무를 포함하여 **철저히 비공개**됩니다.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript for Mobile Menu and Assessment Logic -->
+    <script>
+        // Mobile Menu Toggle Logic (Reused)
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        mobileMenuButton.addEventListener('click', () => {
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+            
+            // Toggle icons
+            menuIconOpen.classList.toggle('hidden');
+            menuIconClose.classList.toggle('hidden');
+        });
+
+        // Simple Assessment Submission Logic
+        function submitAssessment() {
+            const form = document.getElementById('assessment-form');
+            const age = document.getElementById('child_age').value;
+            const concerns = form.querySelectorAll('input[name="concern"]:checked');
+            const behavior = form.querySelector('input[name="behavior"]:checked');
+            const intensity = form.querySelector('input[name="intensity"]:checked'); // New check
+            const concern_level = form.querySelector('input[name="concern_level"]:checked'); // New check
+
+
+            // Validation for all 5 questions
+            if (!age) {
+                showTemporaryAlert('1번 항목 (연령대)을 선택해 주세요.');
+                return;
+            }
+            if (concerns.length === 0) {
+                showTemporaryAlert('2번 항목 (주된 영역)을 하나 이상 선택해 주세요.');
+                return;
+            }
+            if (!behavior) {
+                showTemporaryAlert('3번 항목 (관찰 행동)을 선택해 주세요.');
+                return;
+            }
+            if (!intensity) {
+                showTemporaryAlert('4번 항목 (감정 표현 특징)을 선택해 주세요.');
+                return;
+            }
+            if (!concern_level) {
+                showTemporaryAlert('5번 항목 (부모님 우려 수준)을 선택해 주세요.');
+                return;
+            }
+
+
+            // Hide the form and show the result message
+            form.classList.add('hidden');
+            const resultMessage = document.getElementById('result-message');
+            resultMessage.classList.remove('hidden');
+            
+            // Scroll to the result message for better UX
+            resultMessage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function showTemporaryAlert(message) {
+            const formDiv = document.getElementById('diagnosis-form');
+            let alertBox = document.getElementById('form-alert');
+            
+            // If alert box already exists, update content.
+            if (!alertBox) {
+                alertBox = document.createElement('div');
+                alertBox.id = 'form-alert';
+                alertBox.className = 'mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-center transition duration-500 ease-in-out';
+                formDiv.insertBefore(alertBox, formDiv.firstChild); // Insert before the form
+            }
+            alertBox.textContent = message;
+            
+            // Auto-hide the alert after 4 seconds
+            setTimeout(() => {
+                if(alertBox) alertBox.remove();
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
