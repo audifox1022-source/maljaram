@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>말자람터 | 치료 후기</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'maljaram-primary': '#3B82F6', 
+                        'maljaram-accent': '#10B981', 
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; color: #1f2937; }
+        .review-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .review-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+    <!-- Navigation Bar (GNB) - '전문가/자료실' 명칭을 '치료 후기'로 변경 -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="/maljaram/index.html" class="text-2xl font-extrabold text-maljaram-primary tracking-tight">
+                        말자람터 언어심리연구소
+                    </a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex md:space-x-8 items-center">
+                    <a href="/maljaram/about.html" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg">소개</a>
+                    <a href="/maljaram/programs.html" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg">프로그램</a>
+                    <!-- 메뉴 이름 변경 -->
+                    <a href="/maljaram/experts.html" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg font-bold text-maljaram-primary border-b-2 border-maljaram-primary">치료 후기</a>
+                    <a href="/maljaram/contact.html" class="px-5 py-2 text-sm font-semibold rounded-full text-white bg-maljaram-accent hover:bg-emerald-600 transition duration-300 shadow-md hover:shadow-lg">
+                        1:1 상담/예약
+                    </a>
+                </div>
+                <!-- Mobile Menu Button (JS logic included below) -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-maljaram-primary" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">메인 메뉴 열기</span>
+                        <i class="fa-solid fa-bars h-6 w-6" id="menu-icon-open"></i>
+                        <i class="fa-solid fa-xmark h-6 w-6 hidden" id="menu-icon-close"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="/maljaram/about.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">소개</a>
+                <a href="/maljaram/programs.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">프로그램</a>
+                <a href="/maljaram/experts.html" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-maljaram-primary text-center">치료 후기</a>
+                <a href="/maljaram/contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">1:1 상담/예약</a>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="flex-grow py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Header Copy -->
+            <div class="text-center mb-16 max-w-4xl mx-auto">
+                <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight leading-snug">
+                    <span class="text-maljaram-accent">불안했던 시작이 희망으로</span>, 부모님들이 직접 전하는 감동 후기.
+                </h1>
+                <p class="mt-4 text-xl text-gray-500">
+                    말자람터 언어심리연구소에서 변화를 경험한 아이들과 부모님의 생생한 이야기를 확인하고 용기를 얻으세요.
+                </p>
+            </div>
+
+            <!-- Review Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+                <!-- 1. 언어 발달 성공 사례 (Speech/Language Focus) -->
+                <div class="review-card bg-white p-8 rounded-2xl shadow-lg border-t-4 border-maljaram-primary">
+                    <div class="flex items-center mb-4">
+                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
+                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
+                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
+                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
+                        <i class="fa-solid fa-star text-yellow-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-maljaram-primary mb-3">"이제 자기 생각을 막힘없이 이야기해요."</h3>
+                    <p class="italic text-gray-700 mb-4 leading-relaxed">
+                        "만 5세가 되도록 문장 구사가 어려워 걱정이 많았는데, 6개월간 언어치료 후 아이가 스스로 '엄마 이거 해줘'라고 말하는 기적을 경험했어요. 발음도 훨씬 또렷해졌습니다."
+                    </p>
+                    <div class="text-right border-t pt-3">
+                        <p class="text-sm font-semibold text-gray-800">김*윤 (5세 자녀 부모)</p>
+                        <p class="text-xs text-gray-500">주요 치료: 언어치료 (조음 및 표현)</p>
+                    </div>
+                </div>
+
+                <!-- 2. 정서 및 행동 조절 성공 사례 (Play/Emotional Focus) -->
+                <div class="review-card bg-white p-8 rounded-2xl shadow-lg border-t-4 border-maljaram-accent">
+                    <div class="flex items-center mb-4">
+                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
+                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
+                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
+                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
+                        <i class="fa-solid fa-star-half-alt text-yellow-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-maljaram-accent mb-3">"떼쓰기가 줄고, 자기 감정을 말로 표현해요."</h3>
+                    <p class="italic text-gray-700 mb-4 leading-relaxed">
+                        "분노 조절이 안 되어 집안 분위기가 늘 힘들었는데, 놀이치료를 통해 아이가 감정을 해소하는 법을 배웠습니다. 이제 화가 나도 울거나 떼쓰기보다 '엄마 속상해요'라고 말합니다. 가족 모두가 행복해졌어요."
+                    </p>
+                    <div class="text-right border-t pt-3">
+                        <p class="text-sm font-semibold text-gray-800">이*진 (4세 자녀 부모)</p>
+                        <p class="text-xs text-gray-500">주요 치료: 놀이치료 (정서 및 행동)</p>
+                    </div>
+                </div>
+
+                <!-- 3. 사회성 및 자신감 향상 사례 (Group/Art Focus) -->
+                <div class="review-card bg-white p-8 rounded-2xl shadow-lg border-t-4 border-maljaram-primary">
+                    <div class="flex items-center mb-4">
+                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
+                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
+                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
+                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
+                        <i class="fa-solid fa-star text-yellow-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-maljaram-primary mb-3">"학교생활에 자신감을 얻고 친구들에게 먼저 다가가요."</h3>
+                    <p class="italic text-gray-700 mb-4 leading-relaxed">
+                        "초등학교 입학 후 소극적이던 아이가 미술심리와 그룹 치료를 병행하면서 눈에 띄게 활발해졌습니다. 새로운 것에 도전하는 용기가 생겼고, 학교에서 친구들과 웃는 시간이 많아졌다고 합니다."
+                    </p>
+                    <div class="text-right border-t pt-3">
+                        <p class="text-sm font-semibold text-gray-800">최*영 (7세 자녀 부모)</p>
+                        <p class="text-xs text-gray-500">주요 치료: 미술심리 및 그룹 치료</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 네이버 블로그/CTA Section -->
+            <div class="mt-20 text-center bg-white p-10 rounded-2xl shadow-lg border-t-4 border-maljaram-accent/50">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">더 많은 사례와 육아 정보를 찾으시나요?</h2>
+                
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    
+                    <!-- 네이버 블로그 CTA -->
+                    <a href="https://blog.naver.com/audifox" target="_blank" class="inline-flex justify-center items-center px-8 py-4 text-xl font-bold rounded-xl text-white bg-maljaram-primary hover:bg-blue-700 transition duration-300 shadow-lg transform hover:scale-[1.03]">
+                        <i class="fa-solid fa-external-link-alt mr-3"></i>
+                        네이버 블로그에서 자세히 보기
+                    </a>
+
+                    <!-- 상담 신청 CTA -->
+                    <a href="/maljaram/contact.html" class="inline-flex justify-center items-center px-8 py-4 text-xl font-bold rounded-xl text-white bg-maljaram-accent hover:bg-emerald-600 transition duration-300 shadow-lg transform hover:scale-[1.03]">
+                        <i class="fa-solid fa-calendar-check mr-3"></i>
+                        우리 아이 상담 신청하기
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- JS for Mobile Menu Toggle -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        mobileMenuButton.addEventListener('click', () => {
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+            menuIconOpen.classList.toggle('hidden');
+            menuIconClose.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

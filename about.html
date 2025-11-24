@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>말자람터 | 우리의 약속</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'maljaram-primary': '#3B82F6', 
+                        'maljaram-accent': '#10B981', 
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; color: #1f2937; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+    <!-- Navigation Bar (GNB) --><nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="/maljaram/index.html" class="text-2xl font-extrabold text-maljaram-primary tracking-tight">
+                        말자람터 언어심리연구소
+                    </a>
+                </div>
+                <!-- Desktop Menu --><div class="hidden md:flex md:space-x-8 items-center">
+                    <a href="/maljaram/about.html" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg font-bold text-maljaram-primary border-b-2 border-maljaram-primary">소개</a>
+                    <a href="/maljaram/programs.html" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg">프로그램</a>
+                    <a href="/maljaram/experts.html" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg">전문가/자료실</a>
+                    <a href="/maljaram/contact.html" class="px-5 py-2 text-sm font-semibold rounded-full text-white bg-maljaram-accent hover:bg-emerald-600 transition duration-300 shadow-md hover:shadow-lg">
+                        1:1 상담/예약
+                    </a>
+                </div>
+                <!-- Mobile Menu Button (JS logic included below) --><div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-maljaram-primary" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">메인 메뉴 열기</span>
+                        <i class="fa-solid fa-bars h-6 w-6" id="menu-icon-open"></i>
+                        <i class="fa-solid fa-xmark h-6 w-6 hidden" id="menu-icon-close"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu (Hidden by default) --><div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="/maljaram/about.html" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-maljaram-primary text-center">소개</a>
+                <a href="/maljaram/programs.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">프로그램</a>
+                <a href="/maljaram/experts.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">전문가/자료실</a>
+                <a href="/maljaram/contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">1:1 상담/예약</a>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="flex-grow py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Header Copy --><div class="text-center mb-16 max-w-4xl mx-auto">
+                <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight leading-snug">
+                    아이의 성장은 기다림이 아닌, <span class="text-maljaram-primary">전문적인 돌봄의 영역</span>입니다.
+                </h1>
+                <p class="mt-4 text-xl text-gray-500">
+                    말자람터 언어심리연구소는 아이의 숨겨진 목소리에 귀 기울이고, 건강한 자아를 형성하도록 돕는 성장의 터전입니다.
+                </p>
+            </div>
+
+            <!-- Core Philosophy Section --><div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Image Section --><div class="order-1 lg:order-2">
+                    <img class="w-full h-auto rounded-2xl shadow-2xl object-cover" 
+                         src="https://source.unsplash.com/random/800x600/?korean,child,therapy,warm,interaction" 
+                         alt="전문가가 한국인 아이와 따뜻하게 교감하며 치료하는 이미지">
+                </div>
+
+                <!-- Content Section --><div class="order-2 lg:order-1 space-y-10">
+                    
+                    <!-- Feature 1: 안전한 성장의 공간 --><div>
+                        <div class="flex items-center text-maljaram-accent mb-3">
+                            <i class="fa-solid fa-home text-3xl mr-3"></i>
+                            <h2 class="text-2xl font-bold">1. '터'가 가진 의미, 안전한 성장의 공간</h2>
+                        </div>
+                        <p class="text-gray-600 text-lg ml-9">
+                            아이들이 자신의 속도와 방식으로 자유롭게 표현하고, 실패를 두려워하지 않는 심리적 안전지대를 제공합니다. 친환경적이고 편안한 환경 설계로 치료 효과를 극대화합니다.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2: 통합 심리 치료의 철학 --><div>
+                        <div class="flex items-center text-maljaram-accent mb-3">
+                            <i class="fa-solid fa-brain-circuit text-3xl mr-3"></i>
+                            <h2 class="text-2xl font-bold">2. 통합 심리 치료의 철학</h2>
+                        </div>
+                        <p class="text-gray-600 text-lg ml-9">
+                            언어만, 놀이만 따로 보지 않습니다. 아이의 모든 발달 영역은 연결되어 있다는 믿음 아래, 전문 분야 간 협진 시스템을 구축합니다. 단순히 '증상'을 없애는 것이 아닌, 아이의 전반적인 '삶의 질' 향상을 목표로 합니다.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3: 부모님과의 동행 --><div>
+                        <div class="flex items-center text-maljaram-accent mb-3">
+                            <i class="fa-solid fa-handshake text-3xl mr-3"></i>
+                            <h2 class="text-2xl font-bold">3. 부모님과의 동행</h2>
+                        </div>
+                        <p class="text-gray-600 text-lg ml-9">
+                            치료의 진정한 완성은 가정에서 이루어집니다. 정기적인 부모 상담과 교육을 통해 아이의 변화를 함께 관찰하고 지원하며, 치료의 연속성을 확보합니다.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CTA --><div class="mt-20 text-center">
+                 <a href="/maljaram/experts.html" class="inline-flex justify-center items-center px-8 py-4 text-xl font-bold rounded-xl text-white bg-maljaram-primary hover:bg-blue-700 transition duration-300 shadow-xl transform hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-maljaram-primary focus:ring-opacity-50">
+                    <i class="fa-solid fa-user-doctor mr-3"></i>
+                    말자람터 전문가팀 만나보기
+                </a>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- JS for Mobile Menu Toggle --><script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        mobileMenuButton.addEventListener('click', () => {
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+            menuIconOpen.classList.toggle('hidden');
+            menuIconClose.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
