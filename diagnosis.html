@@ -140,7 +140,7 @@
                             </label>
                             <!-- Option 6: Behavioral Issues -->
                             <label class="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-200 cursor-pointer">
-                                <input type="checkbox" name="behavioral" value="behavioral" class="form-checkbox h-5 w-5 text-maljaram-accent rounded border-gray-300 focus:ring-maljaram-accent">
+                                <input type="checkbox" name="concern" value="behavioral" class="form-checkbox h-5 w-5 text-maljaram-accent rounded border-gray-300 focus:ring-maljaram-accent">
                                 <span class="text-gray-700 font-medium">주의력 및 행동 문제</span>
                             </label>
                         </div>
@@ -239,8 +239,14 @@
 
                 <!-- Result Message Area (Hidden by default) -->
                 <div id="result-message" class="hidden mt-10 p-6 sm:p-8 bg-maljaram-primary/10 border-l-4 border-maljaram-primary rounded-lg text-center">
+                    <!-- Dynamic Result Content will be injected here by JavaScript -->
                     <h3 class="text-2xl font-bold text-maljaram-primary mb-3">진단 체크 완료!</h3>
-                    <p class="text-gray-700 text-lg mb-6">작성해 주신 내용을 바탕으로, 우리 아이의 발달 단계를 면밀히 검토해 볼 필요가 있습니다. 가장 정확한 진단은 전문가와의 비공개 상담을 통해 이루어집니다.</p>
+                    <p id="result-implication" class="text-gray-700 text-lg mb-6">작성해 주신 내용을 바탕으로, 우리 아이의 발달 단계를 면밀히 검토해 볼 필요가 있습니다. 가장 정확한 진단은 전문가와의 비공개 상담을 통해 이루어집니다.</p>
+
+                    <div id="result-recommendation" class="bg-white p-4 rounded-lg shadow-md mb-6">
+                        <!-- Recommendation content will be injected here -->
+                    </div>
+
                     <a href="/maljaram/contact.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-maljaram-primary hover:bg-blue-700 transition duration-300">
                         <i class="fa-solid fa-calendar-check mr-2"></i>
                         1:1 상담 예약 페이지로 이동
@@ -276,42 +282,72 @@
             menuIconClose.classList.toggle('hidden');
         });
 
-        // Assessment Submission Logic - MODIFIED TO SHOW RESULT MESSAGE
+        // --- Assessment Submission Logic - MODIFIED TO SHOW DYNAMIC RESULT ---
         function submitAssessment() {
             const form = document.getElementById('assessment-form');
             const age = document.getElementById('child_age').value;
             const concerns = form.querySelectorAll('input[name="concern"]:checked');
-            // 'behavior_multi'로 name 속성을 변경하고, 체크된 항목을 배열로 가져옵니다.
             const behaviorMulti = form.querySelectorAll('input[name="behavior_multi"]:checked');
             const intensity = form.querySelector('input[name="intensity"]:checked');
             const concern_level = form.querySelector('input[name="concern_level"]:checked');
 
 
             // 1. Validation for all 5 questions
-            if (!age) {
-                showTemporaryAlert('1번 항목 (연령대)을 선택해 주세요.');
-                return;
+            if (!age) { showTemporaryAlert('1번 항목 (연령대)을 선택해 주세요.'); return; }
+            if (concerns.length === 0) { showTemporaryAlert('2번 항목 (주된 영역)을 하나 이상 선택해 주세요.'); return; }
+            if (behaviorMulti.length === 0) { showTemporaryAlert('3번 항목 (관찰 행동)을 하나 이상 선택해 주세요.'); return; }
+            if (!intensity) { showTemporaryAlert('4번 항목 (감정 표현 특징)을 선택해 주세요.'); return; }
+            if (!concern_level) { showTemporaryAlert('5번 항목 (부모님 우려 수준)을 선택해 주세요.'); return; }
+
+
+            // 2. If validation passes, generate dynamic result
+            const resultImplication = document.getElementById('result-implication');
+            const resultRecommendation = document.getElementById('result-recommendation');
+            
+            let primaryConcerns = [];
+            let primaryImplication = "";
+            let recommendationText = "";
+            let overallSeverity = 0;
+
+            // Analyze Question 2: Primary Concerns
+            concerns.forEach(c => primaryConcerns.push(c.value));
+            
+            // Analyze Question 5: Concern Level (Severity)
+            overallSeverity = parseInt(concern_level.value);
+
+
+            // --- Generate Implication Text (Result) ---
+            if (primaryConcerns.includes('language')) {
+                primaryImplication += "언어 및 의사소통 발달 영역에 대한 주의 깊은 관찰이 필요합니다. ";
             }
-            if (concerns.length === 0) {
-                showTemporaryAlert('2번 항목 (주된 영역)을 하나 이상 선택해 주세요.');
-                return;
+            if (primaryConcerns.includes('emotional') || primaryConcerns.includes('sensory')) {
+                primaryImplication += "정서, 사회성, 또는 감정 조절과 관련된 심리 치료의 접근을 고려해 볼 수 있습니다. ";
             }
-            // 3번 항목: 체크된 항목이 하나도 없을 경우 경고
-            if (behaviorMulti.length === 0) {
-                showTemporaryAlert('3번 항목 (관찰 행동)을 하나 이상 선택해 주세요.');
-                return;
+            if (primaryConcerns.includes('cognition') || primaryConcerns.includes('behavioral')) {
+                primaryImplication += "학습 및 주의력/행동 조절에 대한 전문가의 진단이 필요합니다. ";
             }
-            if (!intensity) {
-                showTemporaryAlert('4번 항목 (감정 표현 특징)을 선택해 주세요.');
-                return;
-            }
-            if (!concern_level) {
-                showTemporaryAlert('5번 항목 (부모님 우려 수준)을 선택해 주세요.');
-                return;
+
+            // Fallback if no specific area is selected (shouldn't happen with validation)
+            if (primaryImplication === "") {
+                primaryImplication = "아이의 다양한 발달 영역에 대한 부모님의 관심과 관찰이 필요한 단계입니다. ";
             }
 
 
-            // 2. If validation passes, show the result message and hide the form
+            // --- Generate Recommendation Text ---
+            if (overallSeverity >= 4) {
+                recommendationText = `<p class="font-bold text-red-600 mb-2"><i class="fa-solid fa-triangle-exclamation mr-2"></i> 부모님의 우려도가 높습니다. 조기 상담을 강력히 권고합니다.</p>`;
+            } else if (overallSeverity >= 3) {
+                recommendationText = `<p class="font-bold text-orange-500 mb-2"><i class="fa-solid fa-lightbulb mr-2"></i> 정밀 진단 및 전문가 상담을 통해 아이에게 필요한 맞춤형 솔루션을 찾아보세요.</p>`;
+            } else {
+                 recommendationText = `<p class="font-bold text-maljaram-accent mb-2"><i class="fa-solid fa-check-circle mr-2"></i> 현재 단계에서는 가정 내 환경 조절 및 전문 자료 습득만으로도 긍정적 변화를 기대할 수 있습니다.</p>`;
+            }
+
+            // Combine and update UI
+            resultImplication.innerHTML = `<p class="font-bold text-gray-800 mb-2">🔎 아이의 주요 우려 영역</p><p>${primaryImplication}</p>`;
+            resultRecommendation.innerHTML = recommendationText;
+
+
+            // 3. Display the result message and hide the form
             form.classList.add('hidden');
             const resultMessage = document.getElementById('result-message');
             resultMessage.classList.remove('hidden');
