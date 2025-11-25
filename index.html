@@ -33,13 +33,22 @@
             scroll-behavior: smooth; /* 부드러운 스크롤 적용 */
         }
         /* Hero 섹션 배경색을 설정하여 이미지 없이도 깔끔하게 보이도록 처리 */
-        .hero-background {
+        /* .hero-background {
             background-color: #3B82F6; 
             background-image: linear-gradient(135deg, #3B82F6 0%, #1d4ed8 100%);
-        }
+        } */
         /* 후기 슬라이더를 위한 CSS */
         .testimonial-fade {
             transition: opacity 1s ease-in-out;
+        }
+        /* Hero Section에 이미지를 배경으로 설정 */
+        .hero-background-image {
+            background-size: cover;
+            background-position: center;
+            /* GitHub Raw URL을 사용 (파일명과 경로 일치 필요) */
+            /* 배경 이미지가 로드되지 않을 경우를 대비해 배경색을 남겨둠 */
+            background-color: #3B82F6; 
+            background-image: url('https://raw.githubusercontent.com/audifox1022-source/maljaram/main/images/counter_image.jpg');
         }
     </style>
 </head>
@@ -89,8 +98,11 @@
         </div>
     </nav>
 
-    <!-- 1. Hero Section (이미지 제거, 배경색 사용) -->
-    <header class="hero-background pt-20 pb-32 sm:py-32 lg:pt-40 lg:pb-52">
+    <!-- 1. Hero Section (이미지 배경 적용) -->
+    <header class="hero-background-image pt-20 pb-32 sm:py-32 lg:pt-40 lg:pb-52 relative">
+        <!-- Overlay for Text Readability -->
+        <div class="absolute inset-0 bg-gray-900 opacity-60"></div>
+        
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
             
             <!-- H1: 헤드라인 -->
