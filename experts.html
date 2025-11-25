@@ -26,11 +26,12 @@
         body { font-family: 'Inter', sans-serif; color: #1f2937; }
         .review-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .review-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .review-image-container { height: 200px; overflow: hidden; margin-bottom: 20px; }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col">
 
-    <!-- Navigation Bar (GNB) - '전문가/자료실' 명칭을 '치료 후기'로 변경 -->
+    <!-- Navigation Bar (GNB) -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
@@ -83,20 +84,22 @@
                 </p>
             </div>
 
-            <!-- Review Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <!-- Review Grid (3x2 = 6 reviews) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
                 <!-- 1. 언어 발달 성공 사례 (Speech/Language Focus) -->
                 <div class="review-card bg-white p-8 rounded-2xl shadow-lg border-t-4 border-maljaram-primary">
-                    <div class="flex items-center mb-4">
-                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
-                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
-                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
-                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
-                        <i class="fa-solid fa-star text-yellow-500 text-xl"></i>
+                    <div class="review-image-container rounded-t-xl">
+                        <!-- 플레이스홀더 이미지로 변경: 언어 발달 -->
+                        <img class="w-full h-full object-cover rounded-xl" 
+                             src="https://placehold.co/400x200/3B82F6/ffffff?text=Language" 
+                             alt="언어 치료 장면 이미지">
+                    </div>
+                    <div class="flex items-center mb-4 text-yellow-500">
+                        <i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-maljaram-primary mb-3">"이제 자기 생각을 막힘없이 이야기해요."</h3>
-                    <p class="italic text-gray-700 mb-4 leading-relaxed">
+                    <p class="italic text-gray-700 mb-4 leading-relaxed line-clamp-4">
                         "만 5세가 되도록 문장 구사가 어려워 걱정이 많았는데, 6개월간 언어치료 후 아이가 스스로 '엄마 이거 해줘'라고 말하는 기적을 경험했어요. 발음도 훨씬 또렷해졌습니다."
                     </p>
                     <div class="text-right border-t pt-3">
@@ -107,15 +110,17 @@
 
                 <!-- 2. 정서 및 행동 조절 성공 사례 (Play/Emotional Focus) -->
                 <div class="review-card bg-white p-8 rounded-2xl shadow-lg border-t-4 border-maljaram-accent">
-                    <div class="flex items-center mb-4">
-                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
-                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
-                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
-                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
-                        <i class="fa-solid fa-star-half-alt text-yellow-500 text-xl"></i>
+                    <div class="review-image-container rounded-t-xl">
+                        <!-- 플레이스홀더 이미지로 변경: 놀이 치료 -->
+                        <img class="w-full h-full object-cover rounded-xl" 
+                             src="https://placehold.co/400x200/10B981/ffffff?text=Play+Therapy" 
+                             alt="놀이 치료 장면 이미지">
+                    </div>
+                    <div class="flex items-center mb-4 text-yellow-500">
+                        <i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star-half-alt"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-maljaram-accent mb-3">"떼쓰기가 줄고, 자기 감정을 말로 표현해요."</h3>
-                    <p class="italic text-gray-700 mb-4 leading-relaxed">
+                    <p class="italic text-gray-700 mb-4 leading-relaxed line-clamp-4">
                         "분노 조절이 안 되어 집안 분위기가 늘 힘들었는데, 놀이치료를 통해 아이가 감정을 해소하는 법을 배웠습니다. 이제 화가 나도 울거나 떼쓰기보다 '엄마 속상해요'라고 말합니다. 가족 모두가 행복해졌어요."
                     </p>
                     <div class="text-right border-t pt-3">
@@ -126,15 +131,17 @@
 
                 <!-- 3. 사회성 및 자신감 향상 사례 (Group/Art Focus) -->
                 <div class="review-card bg-white p-8 rounded-2xl shadow-lg border-t-4 border-maljaram-primary">
-                    <div class="flex items-center mb-4">
-                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
-                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
-                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
-                        <i class="fa-solid fa-star text-yellow-500 text-xl mr-2"></i>
-                        <i class="fa-solid fa-star text-yellow-500 text-xl"></i>
+                    <div class="review-image-container rounded-t-xl">
+                        <!-- 플레이스홀더 이미지로 변경: 미술/그룹 치료 -->
+                        <img class="w-full h-full object-cover rounded-xl" 
+                             src="https://placehold.co/400x200/3B82F6/ffffff?text=Art+Group" 
+                             alt="미술 및 그룹 치료 장면 이미지">
+                    </div>
+                    <div class="flex items-center mb-4 text-yellow-500">
+                        <i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-maljaram-primary mb-3">"학교생활에 자신감을 얻고 친구들에게 먼저 다가가요."</h3>
-                    <p class="italic text-gray-700 mb-4 leading-relaxed">
+                    <p class="italic text-gray-700 mb-4 leading-relaxed line-clamp-4">
                         "초등학교 입학 후 소극적이던 아이가 미술심리와 그룹 치료를 병행하면서 눈에 띄게 활발해졌습니다. 새로운 것에 도전하는 용기가 생겼고, 학교에서 친구들과 웃는 시간이 많아졌다고 합니다."
                     </p>
                     <div class="text-right border-t pt-3">
@@ -142,6 +149,70 @@
                         <p class="text-xs text-gray-500">주요 치료: 미술심리 및 그룹 치료</p>
                     </div>
                 </div>
+
+                <!-- 4. [New] 자존감 향상 사례 (Emotional/Play Focus) -->
+                <div class="review-card bg-white p-8 rounded-2xl shadow-lg border-t-4 border-maljaram-accent">
+                    <div class="review-image-container rounded-t-xl">
+                        <!-- 플레이스홀더 이미지로 변경: 자존감 -->
+                        <img class="w-full h-full object-cover rounded-xl" 
+                             src="https://placehold.co/400x200/10B981/ffffff?text=Self+Esteem" 
+                             alt="행복한 아이의 모습 이미지">
+                    </div>
+                    <div class="flex items-center mb-4 text-yellow-500">
+                        <i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-maljaram-accent mb-3">"선생님 덕분에 아이가 자신을 사랑하게 됐어요."</h3>
+                    <p class="italic text-gray-700 mb-4 leading-relaxed line-clamp-4">
+                        "늘 남과 비교하며 자신 없어 하던 아이가, 치료를 통해 스스로 '나는 괜찮은 아이'라는 것을 알게 되었습니다. 자존감이 높아지니 학교생활도 훨씬 즐거워졌어요."
+                    </p>
+                    <div class="text-right border-t pt-3">
+                        <p class="text-sm font-semibold text-gray-800">이*현 (10세 자녀 부모)</p>
+                        <p class="text-xs text-gray-500">주요 치료: 자존감 향상 놀이치료</p>
+                    </div>
+                </div>
+                
+                <!-- 5. [New] 사춘기 청소년 소통 사례 (Counseling Focus) -->
+                <div class="review-card bg-white p-8 rounded-2xl shadow-lg border-t-4 border-maljaram-primary">
+                    <div class="review-image-container rounded-t-xl">
+                        <!-- 플레이스홀더 이미지로 변경: 청소년 상담 -->
+                        <img class="w-full h-full object-cover rounded-xl" 
+                             src="https://placehold.co/400x200/3B82F6/ffffff?text=Teen+Counselling" 
+                             alt="청소년 상담 장면 이미지">
+                    </div>
+                    <div class="flex items-center mb-4 text-yellow-500">
+                        <i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star-half-alt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-maljaram-primary mb-3">"단절되었던 아이와 대화의 물꼬가 트였습니다."</h3>
+                    <p class="italic text-gray-700 mb-4 leading-relaxed line-clamp-4">
+                        "사춘기 자녀와 관계가 완전히 단절되어 힘들었습니다. 전문가의 중재와 부모 상담을 통해 아이의 마음을 이해하게 되었고, 이제는 서로 존중하며 이야기합니다."
+                    </p>
+                    <div class="text-right border-t pt-3">
+                        <p class="text-sm font-semibold text-gray-800">박*철 (15세 자녀 부모)</p>
+                        <p class="text-xs text-gray-500">주요 치료: 청소년 심리상담</p>
+                    </div>
+                </div>
+
+                <!-- 6. [New] 미취학 아동 초기 언어 성공 사례 (Early Intervention) -->
+                <div class="review-card bg-white p-8 rounded-2xl shadow-lg border-t-4 border-maljaram-accent">
+                    <div class="review-image-container rounded-t-xl">
+                        <!-- 플레이스홀더 이미지로 변경: 영유아 언어 -->
+                        <img class="w-full h-full object-cover rounded-xl" 
+                             src="https://placehold.co/400x200/10B981/ffffff?text=Toddler+Speech" 
+                             alt="영유아 언어치료 장면 이미지">
+                    </div>
+                    <div class="flex items-center mb-4 text-yellow-500">
+                        <i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star mr-1"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-maljaram-accent mb-3">"두 돌이 지나도 낱말만 말하던 아이가 문장을 만들어요."</h3>
+                    <p class="italic text-gray-700 mb-4 leading-relaxed line-clamp-4">
+                        "두 돌이 지나도 낱말만 간신히 말해서 불안했습니다. 조기 언어치료를 시작한 후 4개월 만에 3단어 문장을 구사하기 시작했습니다. 용기 내서 상담받길 정말 잘했어요."
+                    </p>
+                    <div class="text-right border-t pt-3">
+                        <p class="text-sm font-semibold text-gray-800">신*영 (3세 자녀 부모)</p>
+                        <p class="text-xs text-gray-500">주요 치료: 초기 언어 발달 치료</p>
+                    </div>
+                </div>
+
             </div>
 
             <!-- 네이버 블로그/CTA Section -->
