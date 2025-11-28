@@ -95,7 +95,7 @@
         </section>
 
         <!-- Program Configuration Section (Tab Content) -->
-        <section className="py-16 bg-orange-50">
+        <section class="py-16 bg-orange-50">
                <div class="max-w-4xl mx-auto px-6">
                     <div class="text-center mb-10">
                         <h2 class="text-3xl font-bold mb-4">프로그램 구성</h2>
@@ -277,9 +277,6 @@
             // --- 폼 제출 로직 (순수 JS) ---
             const form = document.getElementById('registration-form');
             const submitButton = document.getElementById('submit-button');
-            const successMessage = document.getElementById('success-message');
-            const errorMessage = document.getElementById('error-message');
-            const resetButton = document.getElementById('reset-button');
             
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -288,39 +285,36 @@
                 const requiredInputs = form.querySelectorAll('[required]');
                 let isValid = true;
                 requiredInputs.forEach(input => {
-                    if (!input.value.trim() || (input.type === 'radio' && !form.querySelector(`input[name="${input.name}"]:checked`))) {
+                    // 라디오 버튼 그룹 체크 로직 수정: 모든 라디오 그룹이 체크되었는지 확인
+                    if (input.type === 'radio' && !form.querySelector(`input[name="${input.name}"]:checked`)) {
+                        isValid = false;
+                    } else if (input.type !== 'radio' && !input.value.trim()) {
                         isValid = false;
                     }
                 });
 
-                if (!isValid) {
-                    errorMessage.classList.remove('hidden');
-                    return;
-                }
-                
-                errorMessage.classList.add('hidden');
-                
-                // 2. Submission Simulation
-                submitButton.textContent = '제출 중...';
-                submitButton.disabled = true;
+                if (isValid) {
+                    // ** 유효성 검사 통과 시, Google 폼으로 리다이렉트 **
+                    // 사용자님의 실제 Google Form 링크로 교체해야 합니다.
+                    const googleFormLink = "https://forms.gle/kAoWh4e4YcqzMVWA7"; 
+                    
+                    if (googleFormLink.includes("https://forms.gle/kAoWh4e4YcqzMVWA7")) {
+                        // 데모 모드일 경우 경고
+                        alert("주의: 현재는 데모 링크입니다. 실제 Google Form 링크로 교체해야 신청이 접수됩니다.");
+                    }
 
-                // ** 실제 데이터베이스 저장이 필요한 경우: 이 부분에 AJAX/Fetch API를 사용하여 데이터를 전송합니다. **
-                // 현재는 정적 HTML이므로, 1.5초 후 성공 메시지를 표시합니다.
-                
-                setTimeout(() => {
-                    form.classList.add('hidden');
-                    successMessage.classList.remove('hidden');
+                    // 새 창에서 Google 폼 열기
+                    window.open(googleFormLink, '_blank');
+
+                } else {
+                    // 유효성 검사 실패 시 에러 메시지 표시 (현재 코드에는 error-message가 없으므로 alert 사용)
+                    alert("모든 필수 항목을 입력해주세요.");
                     window.scrollTo({ top: document.getElementById('register').offsetTop, behavior: 'smooth' });
-                }, 1500);
+                }
             });
 
-            resetButton.addEventListener('click', function() {
-                form.reset();
-                successMessage.classList.add('hidden');
-                form.classList.remove('hidden');
-                submitButton.textContent = '신청서 제출하기';
-                submitButton.disabled = false;
-            });
+            // 추가 기능 (Success/Reset 기능 제거 - 직접 Google 폼으로 이동하므로 불필요)
+            // footer 영역의 버튼은 작동하지 않도록 유지
         });
 
     </script>
