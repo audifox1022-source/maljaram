@@ -45,6 +45,60 @@
             background-color: #3B82F6; 
             background-image: url('https://raw.githubusercontent.com/audifox1022-source/maljaram/main/images/counter_image.jpg');
         }
+        /* G2 사업 요약 스타일 */
+        .g2-card-title {
+            font-size: 1.25em;
+            font-weight: 700;
+            color: #3B82F6; /* Primary Color */
+            margin-bottom: 12px;
+            border-bottom: 2px solid #e0f2fe; /* light blue */
+            padding-bottom: 6px;
+        }
+        .g2-kpi-value {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        .g2-kpi-item span {
+            font-size: 1.8em;
+            color: #10B981; /* Accent Color */
+        }
+        /* 차트 막대 컨테이너 (이해도를 높이기 위해 CSS를 직접 명료화) */
+        .g2-bar-chart {
+            background-color: #ecfdf5; 
+            border: 1px dashed #34d399;
+            height: 250px; /* 높이 조정 */
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            border-radius: 8px;
+            position: relative;
+        }
+        /* 개별 막대 스타일 */
+        .chart-bar-total, .chart-bar-support, .chart-bar-self {
+            width: 70px;
+            border-radius: 5px 5px 0 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding-bottom: 5px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        /* 차트 제목 스타일 (수정: 겹침 방지) */
+        .chart-title-fixed {
+            position: absolute; 
+            top: 10px; /* 상단 여백 확보 */
+            left: 0; 
+            right: 0; 
+            text-align: center; 
+            font-size: 0.9em; /* 글자 크기 축소 */
+            font-weight: 700; 
+            color: #4b5563; /* Gray-700 */
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -153,32 +207,132 @@
             </div>
         </section>
 
-        <!-- 2. Problem & Solution Section -->
-        <section class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-lg font-semibold text-red-500 uppercase tracking-wider mb-2">Problem & Solution</h2>
-                <h3 class="text-3xl font-extrabold text-gray-900 mb-10">아이의 성장에 대한 부모님의 걱정, 말자람터가 해결합니다.</h3>
+        <!-- 2. G2 사업 요약 Section (Problem & Solution 대체) -->
+        <section class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-lg font-semibold text-maljaram-primary uppercase tracking-wider mb-2 text-center">정부 지원 사업 안내</h2>
+                <h3 class="text-3xl font-extrabold text-gray-900 mb-10 text-center">2026 아동·청소년 심리치유지원사업(G2) 핵심 요약</h3>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-left max-w-4xl mx-auto">
-                    <!-- Problem -->
-                    <div class="p-8 rounded-xl bg-red-50 border border-red-200 shadow-md">
-                        <i class="fa-solid fa-triangle-exclamation text-4xl text-red-500 mb-4"></i>
-                        <h4 class="text-xl font-bold text-gray-900 mb-3">"혹시 우리 아이만 느린 건 아닐까?"</h4>
-                        <p class="text-gray-700">막연한 불안감과 정보의 홍수 속에서 우리 아이의 발달 단계를 확신하지 못하는 부모님들의 마음을 깊이 이해합니다. 잘못된 정보로 인해 골든타임을 놓칠까 염려합니다.</p>
-                    </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     
-                    <!-- Solution -->
-                    <div class="p-8 rounded-xl bg-maljaram-accent/10 border border-maljaram-accent/50 shadow-md">
-                        <i class="fa-solid fa-shield-halved text-4xl text-maljaram-accent mb-4"></i>
-                        <h4 class="text-xl font-bold text-gray-900 mb-3">"정확한 진단이 올바른 성장의 첫걸음입니다."</h4>
-                        <p class="text-gray-700">말자람터는 공인된 전문가의 **정확한 발달 진단**과 아이 맞춤형 **통합 심리 치료 솔루션**을 제공하여 근본적인 문제 해결을 돕습니다.</p>
+                    <!-- Left Panel: Summary & Key Facts -->
+                    <div class="lg:col-span-1 flex flex-col gap-6">
+                        <!-- Summary -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                            <div class="g2-card-title">사업 개요 (Executive Summary)</div>
+                            <p class="text-gray-700 leading-relaxed">
+                                지투(G2) 사업은 만 18세 이하 아동·청소년의 정서·행동 문제를 지원하는 정부 바우처 서비스입니다. 소득 수준에 따라 최대 90%까지 비용을 지원받으며 심리상담, 놀이·미술치료 등을 이용할 수 있습니다. 2026년 1월 신청이 시작됩니다.
+                            </p>
+                        </div>
+                        
+                        <!-- Key Facts -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                            <div class="g2-card-title">핵심 요약 정보 (Key Facts)</div>
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-6">
+                                <div class="flex items-start gap-3 g2-kpi-item">
+                                    <span class="text-2xl pt-1">📅</span>
+                                    <div>
+                                        <div class="g2-kpi-value">1월 접수</div>
+                                        <div class="text-sm text-gray-600">2026년 신청 시작 (동주민센터)</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3 g2-kpi-item">
+                                    <span class="text-2xl pt-1">🏫</span>
+                                    <div>
+                                        <div class="g2-kpi-value">학교 추천</div>
+                                        <div class="text-sm text-gray-600">담임교사 추천 시 우선순위 선정</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3 g2-kpi-item">
+                                    <span class="text-2xl pt-1">👥</span>
+                                    <div>
+                                        <div class="g2-kpi-value">만 18세</div>
+                                        <div class="text-sm text-gray-600">지원 대상 (모든 아동·청소년)</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3 g2-kpi-item">
+                                    <span class="text-2xl pt-1">🔒</span>
+                                    <div>
+                                        <div class="g2-kpi-value">비밀 보장</div>
+                                        <div class="text-sm text-gray-600">생활기록부/보험 기록 미포함</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Middle Panel: Cost Structure Chart & Key Points (Simplified Layout for responsiveness) -->
+                    <div class="lg:col-span-2 flex flex-col gap-6">
+                        
+                        <!-- Chart Container -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                            <div class="g2-card-title">1등급(저소득) 기준 비용 구조 예시</div>
+                            <div class="g2-bar-chart">
+                                <!-- 수정: 겹침 방지를 위해 텍스트 크기를 줄이고 위치를 고정했습니다. -->
+                                <p class="chart-title-fixed">정부 지원금 vs 본인 부담금 비교 (1등급 기준)</p>
+                                
+                                <div class="flex h-full w-4/5 justify-center items-end gap-10 pt-8">
+                                    
+                                    <!-- 막대 1: 총액 -->
+                                    <div class="flex flex-col items-center h-full w-16">
+                                        <div class="w-full text-center text-lg font-bold text-gray-600 mb-2">총액</div>
+                                        <div class="w-full h-full bg-gray-200 rounded-lg flex items-end justify-center text-gray-800 font-bold p-2 shadow-inner">100%</div>
+                                    </div>
+                                    
+                                    <!-- 막대 2: 지원 -->
+                                    <div class="flex flex-col items-center h-full w-16">
+                                        <div class="w-full text-center text-lg font-bold text-gray-600 mb-2">지원</div>
+                                        <div class="w-full chart-bar-support rounded-t-lg flex items-end justify-center p-2 text-white font-bold" style="height: 90%; background-color: #3B82F6;">90%</div>
+                                    </div>
+                                    
+                                    <!-- 막대 3: 부담 -->
+                                    <div class="flex flex-col items-center h-full w-16">
+                                        <div class="w-full text-center text-lg font-bold text-gray-600 mb-2">부담</div>
+                                        <div class="w-full chart-bar-self rounded-t-lg flex items-end justify-center p-2 text-white font-bold" style="height: 10%; background-color: #10B981;">10%</div>
+                                    </div>
+                                </div>
+                                
+                                <p class="mt-4 text-xs text-gray-600">* 1등급 기준: 월 18만원 중 약 16.2만원 지원 (본인부담 1.8만원)<br>* 소득 구간별 본인부담금 상이, 저소득층 최대 지원</p>
+                            </div>
+                        </div>
+
+                        <!-- Key Points and Strategy (Combined into a single section for better flow on mobile) -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 flex-grow">
+                            
+                            <!-- Key Points List -->
+                            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                                <div class="g2-card-title">주요 체크 포인트</div>
+                                <ul class="space-y-3 list-disc pl-5 text-gray-700">
+                                    <li class="text-sm">
+                                        <strong>우선순위 선점 전략:</strong> 학령기 아동은 '학교 담임교사 추천서' 제출 시 선정 확률 및 우선순위가 대폭 상승합니다.
+                                    </li>
+                                    <li class="text-sm">
+                                        <strong>맞춤형 치료 프로그램:</strong> 심리상담뿐만 아니라 언어, 인지, 놀이, 미술 치료 및 부모 코칭 등 1:1 맞춤형 서비스를 제공합니다.
+                                    </li>
+                                    <li class="text-sm">
+                                        <strong>안전한 비밀 보장:</strong> 상담 내용은 철저히 비밀이 보장되며, 학교 생활기록부나 추후 보험 가입 등에 전혀 불이익이 없습니다.
+                                    </li>
+                                    <li class="text-sm">
+                                        <strong>사전 준비 필수:</strong> 1월 신청 기간에 몰릴 수 있으므로, 12월 중 추천서 및 필요 서류를 미리 준비하는 것이 유리합니다.
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Strategic Suggestion -->
+                            <div class="p-6 bg-maljaram-primary/10 border-l-4 border-maljaram-primary rounded-lg text-center shadow-md flex items-center justify-center">
+                                <div>
+                                    <strong class="text-maljaram-primary text-md">전략적 제언:</strong>
+                                    <p class="text-gray-800 text-sm mt-2 font-medium">2026년 1월 신청 시작 전, 12월 중에 학교 추천서를 미리 확보하여 서비스 선정 확률을 높이는 것이 가장 중요합니다.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- 3. Key Features Section -->
-        <section class="py-20 bg-gray-50">
+        <section class="py-20 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-lg font-semibold text-maljaram-primary uppercase tracking-wider mb-2">Key Features</h2>
                 <h3 class="text-3xl font-extrabold text-gray-900 mb-12">말자람터만의 차별화된 3가지 핵심 가치</h3>
