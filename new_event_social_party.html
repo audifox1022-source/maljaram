@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>말자람터 신년파티 & 사회성 모임</title>
+    
+    <!-- Tailwind CSS (스타일링 도구) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome (아이콘) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- 폰트 설정 및 커스텀 스타일 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; }
+        .tab-content { transition: opacity 0.3s ease; }
+        .hidden-tab { display: none; }
+        
+        /* 말자람터 색상 */
+        .text-maljaram-primary { color: #3B82F6; }
+        .bg-maljaram-primary { background-color: #3B82F6; }
+        .text-maljaram-accent { color: #10B981; }
+        .bg-maljaram-accent { background-color: #10B981; }
+        .border-maljaram-accent { border-color: #10B981; }
+    </style>
+</head>
+<body class="bg-[#FFFBF0] text-gray-800">
+    <div id="root">
+        <!-- Navigation Bar -->
+        <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-orange-100">
+            <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+                <div class="font-bold text-xl text-orange-600 flex items-center gap-2">
+                    <i class="fa-solid fa-star-of-life w-6 h-6"></i>
+                    말자람터
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="/maljaram/announcements.html" class="text-gray-500 hover:text-gray-800 font-medium text-sm transition hidden sm:inline-block">공지사항</a>
+                    <a href="#register" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-medium transition shadow-lg hidden sm:inline-block">참가 신청하기</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="pt-12 pb-20 px-6 text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-700 text-sm font-semibold mb-4 border border-orange-200">2026년 제 1회 신년파티</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">아이들의 마음이 자라는<br/><span class="text-orange-500">사회성 & 친목 모임</span></h1>
+            <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">즐겁고 편안한 분위기에서 또래와 자연스럽게 어울리는 시간.<br/>전문 선생님들과 함께하는 체계적인 프로그램을 만나보세요.</p>
+            <div class="flex flex-col md:flex-row justify-center gap-4 mb-12">
+                <div class="flex items-center justify-center gap-2 bg-white px-6 py-3 rounded-xl shadow-sm border border-orange-100"><i class="fa-solid fa-calendar-alt w-5 h-5 text-orange-500"></i><span class="font-medium">2026년 1월 10일 (토)</span></div>
+                <div class="flex items-center justify-center gap-2 bg-white px-6 py-3 rounded-xl shadow-sm border border-orange-100"><i class="fa-solid fa-map-pin w-5 h-5 text-orange-500"></i><span class="font-medium">말자람터 언어심리연구소</span></div>
+            </div>
+        </section>
+
+        <!-- Special Features Section -->
+        <section class="py-16 bg-white rounded-t-[3rem] shadow-sm">
+            <div class="max-w-4xl mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12">이런 점이 특별해요</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Feature Card 1 -->
+                    <div class="flex gap-4 p-4 rounded-2xl hover:bg-gray-50 transition border border-transparent hover:border-gray-100">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-green-400 flex items-center justify-center shadow-md"><i class="fa-solid fa-users w-6 h-6 text-white"></i></div>
+                        <div>
+                            <h3 class="font-bold text-gray-900 mb-1">또래와의 자연스러운 어울림</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">다양한 또래 친구들과 함께하는 활동을 통해 상호작용 능력을 연습합니다.</p>
+                        </div>
+                    </div>
+                    <!-- Feature Card 2 -->
+                    <div class="flex gap-4 p-4 rounded-2xl hover:bg-gray-50 transition border border-transparent hover:border-gray-100">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-pink-400 flex items-center justify-center shadow-md"><i class="fa-solid fa-heart w-6 h-6 text-white"></i></div>
+                        <div>
+                            <h3 class="font-bold text-gray-900 mb-1">발달 연령 맞춤 자극</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">아이들의 발달 수준에 딱 맞춘 활동으로 사회성 발달을 돕습니다.</p>
+                        </div>
+                    </div>
+                    <!-- Feature Card 3 -->
+                    <div class="flex gap-4 p-4 rounded-2xl hover:bg-gray-50 transition border border-transparent hover:border-gray-100">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-yellow-400 flex items-center justify-center shadow-md"><i class="fa-solid fa-star w-6 h-6 text-white"></i></div>
+                        <div>
+                            <h3 class="font-bold text-gray-900 mb-1">자신감과 성공 경험</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">작은 성공들을 경험하며 긍정적인 자기효능감을 형성합니다.</p>
+                        </div>
+                    </div>
+                    <!-- Feature Card 4 -->
+                    <div class="flex gap-4 p-4 rounded-2xl hover:bg-gray-50 transition border border-transparent hover:border-gray-100">
+                        <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-400 flex items-center justify-center shadow-md"><i class="fa-solid fa-check-circle w-6 h-6 text-white"></i></div>
+                        <div>
+                            <h3 class="font-bold text-gray-900 mb-1">안전하고 전문적인 환경</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">전문 선생님들이 이끄는 체계적인 그룹 활동을 제공합니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Program Configuration Section (Tab Content) -->
+        <section className="py-16 bg-orange-50">
+               <div class="max-w-4xl mx-auto px-6">
+                    <div class="text-center mb-10">
+                        <h2 class="text-3xl font-bold mb-4">프로그램 구성</h2>
+                        <div class="flex justify-center mt-6 gap-2" id="tab-buttons">
+                            <button data-tab="child" class="px-6 py-2 rounded-full text-sm font-bold transition-all bg-orange-500 text-white shadow-md">어린이 그룹 (5-7세)</button>
+                            <button data-tab="student" class="px-6 py-2 rounded-full text-sm font-bold transition-all bg-white text-gray-500">학령기 그룹 (8-10세)</button>
+                        </div>
+                    </div>
+
+                    <!-- Child Group Content -->
+                    <div id="tab-child" class="tab-content bg-white rounded-3xl p-8 shadow-xl border border-orange-100">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="p-3 rounded-full bg-orange-100"><i class="fa-solid fa-face-smile w-6 h-6 text-orange-500"></i></div>
+                            <div><h3 class="text-2xl font-bold text-gray-900">어린이 그룹 (5-7세)</h3><p class="text-gray-500 text-sm">미취학 아동 대상</p></div>
+                        </div>
+                        <div class="mb-6 pb-6 border-b border-gray-100"><p class="text-gray-600">나와 다른 아이를 이해하고 알아가는 경험을 통해 자연스럽게 친구를 사귀는 활동입니다.</p></div>
+                        <ul class="space-y-4">
+                            <li class="flex gap-3"><div class="mt-1.5 min-w-[6px] h-[6px] rounded-full bg-orange-400"></div> <span class="text-gray-700">또래와의 유연한 상호작용 연습</span></li>
+                            <li class="flex gap-3"><div class="mt-1.5 min-w-[6px] h-[6px] rounded-full bg-orange-400"></div> <span class="text-gray-700">협동 놀이 및 소근육·대근육 통합 활동</span></li>
+                            <li class="flex gap-3"><div class="mt-1.5 min-w-[6px] h-[6px] rounded-full bg-orange-400"></div> <span class="text-gray-700">안정적이고 편안한 분위기 속 사회성 기반 놀이</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Student Group Content (Hidden by default) -->
+                    <div id="tab-student" class="tab-content bg-white rounded-3xl p-8 shadow-xl border border-orange-100 hidden-tab">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="p-3 rounded-full bg-blue-100"><i class="fa-solid fa-star w-6 h-6 text-blue-500"></i></div>
+                            <div><h3 class="text-2xl font-bold text-gray-900">학령기 그룹 (8-10세)</h3><p class="text-gray-500 text-sm">초등 저학년 대상</p></div>
+                        </div>
+                        <div class="mb-6 pb-6 border-b border-gray-100"><p class="text-gray-600">또래와의 협력·참여 경험을 통해 관계 기술을 자연스럽게 연습합니다.</p></div>
+                        <ul class="space-y-4">
+                            <li class="flex gap-3"><div class="mt-1.5 min-w-[6px] h-[6px] rounded-full bg-blue-400"></div> <span class="text-gray-700">감정 조절 및 의사소통 기술</span></li>
+                            <li class="flex gap-3"><div class="mt-1.5 min-w-[6px] h-[6px] rounded-full bg-blue-400"></div> <span class="text-gray-700">팀 미션 및 문제 해결 활동</span></li>
+                            <li class="flex gap-3"><div class="mt-1.5 min-w-[6px] h-[6px] rounded-full bg-blue-400"></div> <span class="text-gray-700">또래와의 긍정적 상호작용 촉진</span></li>
+                        </ul>
+                    </div>
+                </div>
+        </section>
+
+        <!-- Operation Guide Section -->
+        <section class="py-16 bg-white">
+            <div class="max-w-4xl mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12">운영 안내</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-orange-600 flex-shrink-0"><i class="fa-solid fa-calendar-alt w-5 h-5"></i></div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">일시</p>
+                                <div class="font-medium text-gray-900">2026년 1월 10일 (토요일)</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-orange-600 flex-shrink-0"><i class="fa-solid fa-clock w-5 h-5"></i></div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">운영 형식</p>
+                                <div class="font-medium text-gray-900">연령별 특성에 맞춘 2타임 구성</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-orange-600 flex-shrink-0"><i class="fa-solid fa-users w-5 h-5"></i></div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">참가비</p>
+                                <div class="font-medium text-gray-900"><span class="font-bold text-lg text-orange-600">50,000원</span> <span class="text-sm text-gray-500">(재료비, 간식, 선물 포함)</span></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-orange-600 flex-shrink-0"><i class="fa-solid fa-phone w-5 h-5"></i></div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">문의</p>
+                                <div class="font-medium text-gray-900">010-4438-5595 (상담 예약 후 상세 안내)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 rounded-2xl p-6 flex flex-col items-center justify-center text-center border border-gray-100">
+                        <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4"><i class="fa-solid fa-map-pin w-8 h-8 text-orange-600"></i></div>
+                        <h3 class="text-xl font-bold mb-2">말자람터 언어심리연구소</h3>
+                        <p class="text-gray-500 mb-6 text-sm">부산 동래구 금강로 27 2층<br/>오시는 길 안내가 필요하시면 문의주세요.</p>
+                        <a href="/maljaram/contact.html" class="text-orange-600 font-semibold text-sm hover:underline flex items-center gap-1">상담 페이지에서 지도 보기 <i class="fa-solid fa-arrow-right w-4 h-4"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registration Form Section -->
+        <section id="register" class="py-20 bg-orange-600 text-white">
+            <div class="max-w-2xl mx-auto px-6">
+                <div class="text-center mb-10"><h2 class="text-3xl font-bold mb-4">참석 정보 제출</h2><p class="text-orange-100">원활한 운영을 위해 사전 정보를 입력해주세요.</p></div>
+                
+                <!-- Registration Form -->
+                <form id="registration-form" class="bg-white rounded-2xl p-6 md:p-8 text-gray-800 shadow-2xl">
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div class="space-y-2"><label for="childName" class="text-sm font-bold text-gray-700">아이 이름</label><input required type="text" id="childName" name="childName" placeholder="예) 김윤재" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-orange-500 outline-none" /></div>
+                        <div class="space-y-2"><label for="parentPhone" class="text-sm font-bold text-gray-700">연락처</label><input required type="tel" id="parentPhone" name="parentPhone" placeholder="010-0000-0000" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-orange-500 outline-none" /></div>
+                    </div>
+                    <div class="space-y-2 mb-6">
+                        <label class="text-sm font-bold text-gray-700">희망 시간대</label>
+                        <div class="grid grid-cols-2 gap-4">
+                            <label class="cursor-pointer"><input type="radio" name="time" value="오전 타임" class="peer sr-only" required /><div class="p-3 text-center rounded-lg border border-gray-200 peer-checked:border-orange-500 peer-checked:bg-orange-50 peer-checked:text-orange-700 transition hover:bg-gray-50">오전 타임</div></label>
+                            <label class="cursor-pointer"><input type="radio" name="time" value="오후 타임" class="peer sr-only" required /><div class="p-3 text-center rounded-lg border border-gray-200 peer-checked:border-orange-500 peer-checked:bg-orange-50 peer-checked:text-orange-700 transition hover:bg-gray-50">오후 타임</div></label>
+                        </div>
+                    </div>
+                    <div class="space-y-2 mb-6"><label for="attendees" class="text-sm font-bold text-gray-700">참석 동반인</label><input required type="text" id="attendees" name="attendees" placeholder="예: 아이, 엄마, 아빠" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-orange-500 outline-none" /></div>
+                    <div class="space-y-2 mb-8"><label for="note" class="text-sm font-bold text-gray-700">비고</label><textarea rows="3" id="note" name="note" placeholder="요청사항을 적어주세요." class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-orange-500 outline-none"></textarea></div>
+                    <button type="submit" id="submit-button" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 rounded-xl text-lg shadow-lg transition transform active:scale-95 disabled:opacity-70 flex justify-center items-center gap-2">
+                        신청서 제출하기
+                    </button>
+                    <p id="error-message" class="text-red-300 text-center mt-4 hidden">모든 필수 항목을 입력해주세요.</p>
+                </form>
+
+                <!-- Success Message (Hidden by default) -->
+                <div id="success-message" class="bg-white text-gray-800 rounded-2xl p-10 text-center shadow-2xl hidden">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"><i class="fa-solid fa-check-circle w-10 h-10 text-green-500"></i></div>
+                    <h3 class="text-2xl font-bold mb-2">신청이 완료되었습니다!</h3>
+                    <p class="text-gray-500 mb-6">담당 선생님이 확인 후 연락드리겠습니다.</p>
+                    <button id="reset-button" class="text-orange-600 font-bold hover:underline">다른 아이 추가 신청하기</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-gray-400 py-12 text-center">
+            <div class="max-w-4xl mx-auto px-6">
+                <p class="font-bold text-white mb-2">말자람터 언어심리연구소</p>
+                <p class="text-sm mb-6">아이들의 꿈과 마음이 자라나는 공간</p>
+                <div class="border-t border-gray-800 pt-6 text-xs flex justify-center items-center gap-4">
+                    <span>&copy; 2026 Maljaramteo. All rights reserved.</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- JavaScript for Tab Switching and Form Submission -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- 탭 전환 로직 ---
+            const tabButtons = document.querySelectorAll('#tab-buttons button');
+            const tabContents = {
+                child: document.getElementById('tab-child'),
+                student: document.getElementById('tab-student')
+            };
+
+            function showTab(activeTabId) {
+                // 버튼 스타일 업데이트
+                tabButtons.forEach(btn => {
+                    const isActive = btn.dataset.tab === activeTabId;
+                    btn.classList.toggle('bg-orange-500', isActive && btn.dataset.tab === 'child');
+                    btn.classList.toggle('text-white', isActive && btn.dataset.tab === 'child');
+                    btn.classList.toggle('shadow-md', isActive && btn.dataset.tab === 'child');
+                    
+                    btn.classList.toggle('bg-blue-500', isActive && btn.dataset.tab === 'student');
+                    btn.classList.toggle('text-white', isActive && btn.dataset.tab === 'student');
+                    btn.classList.toggle('shadow-md', isActive && btn.dataset.tab === 'student');
+
+                    btn.classList.toggle('bg-white', !isActive);
+                    btn.classList.toggle('text-gray-500', !isActive);
+                });
+
+                // 콘텐츠 표시/숨기기
+                Object.keys(tabContents).forEach(key => {
+                    if (key === activeTabId) {
+                        tabContents[key].classList.remove('hidden-tab');
+                    } else {
+                        tabContents[key].classList.add('hidden-tab');
+                    }
+                });
+            }
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    showTab(button.dataset.tab);
+                });
+            });
+
+            // 초기 탭 설정
+            showTab('child');
+
+
+            // --- 폼 제출 로직 (순수 JS) ---
+            const form = document.getElementById('registration-form');
+            const submitButton = document.getElementById('submit-button');
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+            const resetButton = document.getElementById('reset-button');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // 1. Validation Check (필수 항목 확인)
+                const requiredInputs = form.querySelectorAll('[required]');
+                let isValid = true;
+                requiredInputs.forEach(input => {
+                    if (!input.value.trim() || (input.type === 'radio' && !form.querySelector(`input[name="${input.name}"]:checked`))) {
+                        isValid = false;
+                    }
+                });
+
+                if (!isValid) {
+                    errorMessage.classList.remove('hidden');
+                    return;
+                }
+                
+                errorMessage.classList.add('hidden');
+                
+                // 2. Submission Simulation
+                submitButton.textContent = '제출 중...';
+                submitButton.disabled = true;
+
+                // ** 실제 데이터베이스 저장이 필요한 경우: 이 부분에 AJAX/Fetch API를 사용하여 데이터를 전송합니다. **
+                // 현재는 정적 HTML이므로, 1.5초 후 성공 메시지를 표시합니다.
+                
+                setTimeout(() => {
+                    form.classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                    window.scrollTo({ top: document.getElementById('register').offsetTop, behavior: 'smooth' });
+                }, 1500);
+            });
+
+            resetButton.addEventListener('click', function() {
+                form.reset();
+                successMessage.classList.add('hidden');
+                form.classList.remove('hidden');
+                submitButton.textContent = '신청서 제출하기';
+                submitButton.disabled = false;
+            });
+        });
+
+    </script>
+</body>
+</html>
