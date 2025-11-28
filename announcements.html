@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>말자람터 | 공지사항</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'maljaram-primary': '#3B82F6', 
+                        'maljaram-accent': '#10B981', 
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; color: #1f2937; }
+        .list-item-hover { transition: all 0.2s ease; }
+        .list-item-hover:hover { background-color: #f3f4f6; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+    <!-- Navigation Bar (GNB) - 5개 메뉴 포함 -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="/maljaram/index.html" class="text-2xl font-extrabold text-maljaram-primary tracking-tight">
+                        말자람터 언어심리연구소
+                    </a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex md:space-x-8 items-center">
+                    <a href="/maljaram/about.html" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg">소개</a>
+                    <a href="/maljaram/programs.html" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg">프로그램</a>
+                    <a href="/maljaram/experts.html" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg">치유의 발자취</a>
+                    <a href="/maljaram/announcements.html" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg font-bold text-maljaram-primary border-b-2 border-maljaram-primary">공지사항</a>
+                    <a href="/maljaram/contact.html" class="px-5 py-2 text-sm font-semibold rounded-full text-white bg-maljaram-accent hover:bg-emerald-600 transition duration-300 shadow-md hover:shadow-lg">
+                        1:1 상담/예약
+                    </a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-maljaram-primary" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">메인 메뉴 열기</span>
+                        <i class="fa-solid fa-bars h-6 w-6" id="menu-icon-open"></i>
+                        <i class="fa-solid fa-xmark h-6 w-6 hidden" id="menu-icon-close"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="/maljaram/about.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">소개</a>
+                <a href="/maljaram/programs.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">프로그램</a>
+                <a href="/maljaram/experts.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">치유의 발자취</a>
+                <a href="/maljaram/announcements.html" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-maljaram-primary text-center">공지사항</a>
+                <a href="/maljaram/contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">1:1 상담/예약</a>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="flex-grow py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Header Copy -->
+            <div class="text-center mb-12">
+                <p class="text-maljaram-accent font-semibold text-lg uppercase tracking-wider mb-2">말자람터 소식 및 공지</p>
+                <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight leading-snug">
+                    <span class="text-maljaram-primary">새로운 시작</span>을 알립니다.
+                </h1>
+                <p class="mt-4 text-xl text-gray-600">
+                    연구소의 중요한 소식, 특별 이벤트 및 공지사항을 확인하세요.
+                </p>
+            </div>
+
+            <!-- Event Highlight Section (최상단 이벤트 공지) -->
+            <div class="mb-10 p-6 sm:p-8 bg-maljaram-accent/10 border border-maljaram-accent rounded-xl shadow-lg">
+                <div class="flex items-center mb-4">
+                    <i class="fa-solid fa-bullhorn text-2xl text-maljaram-accent mr-3"></i>
+                    <h2 class="text-2xl font-bold text-gray-900">🔔 진행 중인 주요 이벤트</h2>
+                </div>
+                <div class="bg-white p-5 rounded-lg border border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center">
+                    <div>
+                        <p class="text-lg font-bold text-maljaram-primary mb-1">2026년 제 1회 신년 파티 & 사회성 모임 안내</p>
+                        <p class="text-sm text-gray-600">아이들의 마음이 자라는 즐거운 그룹 활동! (접수 마감 임박)</p>
+                    </div>
+                    <a href="/maljaram/new_event_social_party.html" class="mt-3 sm:mt-0 px-4 py-2 text-sm font-semibold rounded-full text-white bg-maljaram-accent hover:bg-emerald-600 transition duration-300 flex items-center shadow-md">
+                        상세 내용 확인 <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- General Announcement List -->
+            <div class="bg-white rounded-xl shadow-lg divide-y divide-gray-100 border border-gray-200">
+                
+                <!-- Item 1 (최신 공지) -->
+                <a href="#" class="list-item-hover p-5 flex justify-between items-center">
+                    <div>
+                        <span class="px-2 py-0.5 mr-2 rounded text-xs font-semibold bg-maljaram-primary text-white">공지</span>
+                        <span class="font-medium text-gray-900">2026년 G2 바우처 사업 안내 및 신청 준비</span>
+                    </div>
+                    <span class="text-sm text-gray-500">2025.12.01</span>
+                </a>
+
+                <!-- Item 2 -->
+                <a href="#" class="list-item-hover p-5 flex justify-between items-center">
+                    <div>
+                        <span class="px-2 py-0.5 mr-2 rounded text-xs font-semibold bg-gray-200 text-gray-700">소식</span>
+                        <span class="font-medium text-gray-900">언어 발달 부모 코칭 프로그램 12월 강의 확정</span>
+                    </div>
+                    <span class="text-sm text-gray-500">2025.11.15</span>
+                </a>
+                
+                <!-- Item 3 -->
+                <a href="#" class="list-item-hover p-5 flex justify-between items-center">
+                    <div>
+                        <span class="px-2 py-0.5 mr-2 rounded text-xs font-semibold bg-gray-200 text-gray-700">공지</span>
+                        <span class="font-medium text-gray-900">연구소 겨울방학 및 휴무 일정 안내</span>
+                    </div>
+                    <span class="text-sm text-gray-500">2025.11.01</span>
+                </a>
+                
+                <!-- Item 4 -->
+                <a href="https://blog.naver.com/audifox" target="_blank" class="list-item-hover p-5 flex justify-between items-center">
+                    <div>
+                        <span class="px-2 py-0.5 mr-2 rounded text-xs font-semibold bg-maljaram-accent text-white">자료실</span>
+                        <span class="font-medium text-gray-900">[블로그 연동] 새로운 부모 교육 자료 업데이트 안내</span>
+                    </div>
+                    <span class="text-sm text-gray-500">2025.10.20</span>
+                </a>
+                
+                <!-- Item 5 -->
+                <a href="#" class="list-item-hover p-5 flex justify-between items-center">
+                    <div>
+                        <span class="px-2 py-0.5 mr-2 rounded text-xs font-semibold bg-gray-200 text-gray-700">소식</span>
+                        <span class="font-medium text-gray-900">14년 경력 원장, 발달 컨퍼런스 참여</span>
+                    </div>
+                    <span class="text-sm text-gray-500">2025.10.05</span>
+                </a>
+                
+            </div>
+            
+            <!-- Pagination Placeholder -->
+            <div class="mt-8 flex justify-center space-x-2">
+                <button class="px-3 py-1 text-sm rounded-full bg-maljaram-primary text-white">1</button>
+                <button class="px-3 py-1 text-sm rounded-full bg-white text-gray-600 hover:bg-gray-100 border">2</button>
+                <button class="px-3 py-1 text-sm rounded-full bg-white text-gray-600 hover:bg-gray-100 border">3</button>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- JS for Mobile Menu Toggle -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        mobileMenuButton.addEventListener('click', () => {
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+            menuIconOpen.classList.toggle('hidden');
+            menuIconClose.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
