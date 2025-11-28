@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>말자람터 언어심리연구소</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for Icons (Hamburger Menu, Features) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons (Hamburger Menu) --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJ8g3gFAJg/iQCHKKK7m7gD5N5z5G5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
-    <!-- Custom Tailwind Configuration for Colors and Fonts -->
-    <script>
+    <!-- Custom Tailwind Configuration for Colors and Fonts --><script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -30,102 +27,60 @@
         body {
             font-family: 'Inter', sans-serif;
             color: #1f2937; /* Gray-800 */
-            scroll-behavior: smooth; /* 부드러운 스크롤 적용 */
         }
-        /* 후기 슬라이더를 위한 CSS */
-        .testimonial-fade {
-            transition: opacity 1s ease-in-out;
-        }
-        /* Hero Section에 이미지를 배경으로 설정 */
-        .hero-background-image {
-            background-size: cover;
-            background-position: center;
-            /* GitHub Raw URL을 사용 (파일명과 경로 일치 필요) */
-            /* 배경 이미지가 로드되지 않을 경우를 대비해 배경색을 남겨둠 */
-            background-color: #3B82F6; 
-            background-image: url('https://raw.githubusercontent.com/audifox1022-source/maljaram/main/images/counter_image.jpg');
-        }
-        /* G2 사업 요약 스타일 */
-        .g2-card-title {
-            font-size: 1.25em;
-            font-weight: 700;
-            color: #3B82F6; /* Primary Color */
-            margin-bottom: 12px;
-            border-bottom: 2px solid #e0f2fe; /* light blue */
-            padding-bottom: 6px;
-        }
-        .g2-kpi-value {
-            font-size: 1.3em;
-            font-weight: 700;
-            color: #1f2937;
-        }
-        .g2-kpi-item span {
-            font-size: 1.8em;
-            color: #10B981; /* Accent Color */
-        }
-        /* 차트 막대 컨테이너 (이해도를 높이기 위해 CSS를 직접 명료화) */
-        .g2-bar-chart {
-            background-color: #ecfdf5; 
-            border: 1px dashed #34d399;
-            height: 250px; /* 높이 조정 */
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            border-radius: 8px;
+        /* 후기 슬라이더 CSS */
+        .testimonial-container {
+            height: 120px; /* 고정 높이 */
+            overflow: hidden;
             position: relative;
         }
-        /* 개별 막대 스타일 */
-        .chart-bar-total, .chart-bar-support, .chart-bar-self {
-            width: 70px;
-            border-radius: 5px 5px 0 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            padding-bottom: 5px;
-            font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        .testimonial-item {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            padding: 0 1rem;
+            text-align: center;
         }
-        /* 차트 제목 스타일 (수정: 겹침 방지) */
-        .chart-title-fixed {
-            position: absolute; 
-            top: 10px; /* 상단 여백 확보 */
-            left: 0; 
-            right: 0; 
-            text-align: center; 
-            font-size: 0.9em; /* 글자 크기 축소 */
-            font-weight: 700; 
-            color: #4b5563; /* Gray-700 */
+        .testimonial-item.active {
+            opacity: 1;
+        }
+        /* 차트 타이틀 겹침 방지 CSS */
+        .chart-title-overlay {
+            position: absolute;
+            top: 5px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.9rem; /* 폰트 크기 조정 */
+            padding: 5px;
         }
     </style>
 </head>
 <body class="bg-gray-50">
 
-    <!-- Navigation Bar (GNB) -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
+    <!-- Navigation Bar (GNB) --><nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
                 <div class="flex-shrink-0 flex items-center">
-                    <!-- 메인 로고 링크 -->
-                    <a href="/maljaram/index.html" class="text-2xl font-extrabold text-maljaram-primary tracking-tight">
+                    <!-- 메인 로고 링크 --><a href="/maljaram/index.html" class="text-2xl font-extrabold text-maljaram-primary tracking-tight">
                         말자람터 언어심리연구소
                     </a>
                 </div>
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex md:space-x-8 items-center">
+                <!-- Desktop Menu --><div class="hidden md:flex md:space-x-8 items-center">
                     <a href="/maljaram/about.html" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg">소개</a>
                     <a href="/maljaram/programs.html" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg">프로그램</a>
-                    <!-- 메뉴 이름 '치료 후기'로 변경 -->
-                    <a href="/maljaram/experts.html" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg">치료 후기</a>
-                    <!-- CTA Button -->
-                    <a href="/maljaram/contact.html" class="px-5 py-2 text-sm font-semibold rounded-full text-white bg-maljaram-accent hover:bg-emerald-600 transition duration-300 shadow-md hover:shadow-lg">
+                    <a href="/maljaram/experts.html" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg">치유의 발자취</a>
+                    <a href="/maljaram/announcements.html" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg">공지사항</a>
+                    <!-- CTA Button --><a href="/maljaram/contact.html" class="px-5 py-2 text-sm font-semibold rounded-full text-white bg-maljaram-accent hover:bg-emerald-600 transition duration-300 shadow-md hover:shadow-lg">
                         1:1 상담/예약
                     </a>
                 </div>
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
+                <!-- Mobile Menu Button --><div class="md:hidden flex items-center">
                     <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-maljaram-primary" aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">메인 메뉴 열기</span>
                         <i class="fa-solid fa-bars h-6 w-6" id="menu-icon-open"></i>
@@ -135,413 +90,295 @@
             </div>
         </div>
 
-        <!-- Mobile Menu (Hidden by default) -->
-        <div class="md:hidden hidden" id="mobile-menu">
+        <!-- Mobile Menu (Hidden by default) --><div class="md:hidden hidden" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="/maljaram/about.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">소개</a>
                 <a href="/maljaram/programs.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">프로그램</a>
-                <!-- 메뉴 이름 '치료 후기'로 변경 -->
-                <a href="/maljaram/experts.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">치료 후기</a>
+                <a href="/maljaram/experts.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">치유의 발자취</a>
+                <a href="/maljaram/announcements.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">공지사항</a>
                 <a href="/maljaram/contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-maljaram-primary text-center hover:bg-blue-700">1:1 상담/예약</a>
             </div>
         </div>
     </nav>
 
-    <!-- 1. Hero Section (이미지 배경 적용) -->
-    <header class="hero-background-image pt-20 pb-32 sm:py-32 lg:pt-40 lg:pb-52 relative">
-        <!-- Overlay for Text Readability -->
-        <div class="absolute inset-0 bg-gray-900 opacity-60"></div>
-        
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-            
-            <!-- H1: 헤드라인 -->
-            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight mb-4 drop-shadow-lg leading-tight">
+    <!-- Hero Section (Counter Image Background) --><header class="relative overflow-hidden pt-20 pb-32 sm:py-32 lg:pt-40 lg:pb-52 bg-maljaram-primary">
+        <!-- Background Image with Overlay --><div class="absolute inset-0">
+            <!-- 카운터 이미지 (GitHub Raw URL로 변경 필요) -->
+            <img class="w-full h-full object-cover" 
+                 src="https://raw.githubusercontent.com/audifox1022-source/maljaram/main/images/counter_image.jpg" 
+                 onerror="this.onerror=null;this.src='https://placehold.co/1600x900/3B82F6/ffffff?text=Maljaram+Counter';"
+                 alt="말자람터 연구소 카운터 이미지">
+            <!-- Darker Overlay for Text Readability --><div class="absolute inset-0 bg-gray-900 opacity-60"></div>
+        </div>
+
+        <!-- Hero Content --><div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <!-- H1: 헤드라인 --><h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight mb-4 drop-shadow-lg leading-tight">
                 우리 아이의 숨겨진 잠재력, <span class="text-maljaram-accent">'말자람터'</span>에서 꽃피우세요.
             </h1>
             
-            <!-- P: 서브 텍스트 -->
-            <p class="mt-4 text-lg sm:text-xl lg:text-2xl font-light max-w-3xl mx-auto drop-shadow-md">
+            <!-- P: 서브 텍스트 --><p class="mt-4 text-lg sm:text-xl lg:text-2xl font-light max-w-3xl mx-auto drop-shadow-md">
                 언어치료, 놀이치료, 미술심리. 전문가의 따뜻한 시선과 과학적 프로그램으로 <br class="hidden sm:inline">우리 아이의 건강한 성장을 돕습니다.
             </p>
 
-            <!-- CTA Buttons -->
-            <div class="mt-12 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <!-- CTA 1 (주요): Accent Color -->
-                <a href="/maljaram/diagnosis.html" class="inline-flex justify-center items-center px-8 py-4 text-lg font-bold rounded-xl text-white bg-maljaram-accent hover:bg-emerald-600 transition duration-300 shadow-xl transform hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-maljaram-accent focus:ring-opacity-50">
+            <!-- CTA Buttons --><div class="mt-12 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <!-- CTA 1 (주요): Accent Color --><a href="/maljaram/diagnosis.html" class="inline-flex justify-center items-center px-8 py-4 text-lg font-bold rounded-xl text-white bg-maljaram-accent hover:bg-emerald-600 transition duration-300 shadow-xl transform hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-maljaram-accent focus:ring-opacity-50">
                     우리 아이 발달 진단 테스트 시작
                 </a>
                 
-                <!-- CTA 2 (보조): Primary Color Line -->
-                <a href="/maljaram/programs.html" class="inline-flex justify-center items-center px-8 py-4 text-lg font-bold rounded-xl text-white border-2 border-white bg-transparent hover:bg-white/10 transition duration-300 shadow-xl transform hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50">
+                <!-- CTA 2 (보조): Primary Color Line --><a href="/maljaram/programs.html" class="inline-flex justify-center items-center px-8 py-4 text-lg font-bold rounded-xl text-white border-2 border-maljaram-primary bg-transparent hover:bg-maljaram-primary transition duration-300 shadow-xl transform hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-maljaram-primary focus:ring-opacity-50">
                     말자람터 치료 프로그램 자세히 보기
                 </a>
             </div>
 
-            <!-- Metric 1: 실시간 방문자 수 (Hero Section에 추가) -->
-            <div class="mt-16 w-full max-w-md mx-auto p-4 rounded-xl bg-white bg-opacity-10 backdrop-blur-sm shadow-lg border border-white/20">
-                <p class="text-sm text-white/80 font-medium mb-1">실시간 방문자 수</p>
-                <div id="external-counter-area" class="text-2xl font-extrabold text-maljaram-accent">
-                    <!-- **** 여기에 1단계에서 복사한 외부 카운터 코드를 붙여넣으세요 **** -->
-                    <!-- Counter 코드: 폰트 색상과 크기를 Hero Section에 맞게 조정했습니다. -->
-                    <div align=center style="color: #10B981; font-size: 1.5rem; font-weight: 800;"><a href='https://www.counter12.com'><img src='https://www.counter12.com/img-a0wDx8cZzdA1xDdZ-26.gif' border='0' alt='free counter' style="display:inline-block; margin-right: 8px;"></a><script type='text/javascript' src='https://www.counter12.com/ad.js?id=a0wDx8cZzdA1xDdZ'></script></div>
+            <!-- Real-time Counter (Wassup/External) -->
+            <div class="relative mt-16 max-w-sm mx-auto bg-white/90 backdrop-blur-sm p-3 rounded-lg shadow-xl border border-gray-200">
+                <p class="text-sm font-semibold text-gray-800 mb-1">실시간 방문자 수</p>
+                <div id="external-counter-area" class="text-gray-900 font-bold text-xl">
+                    <!-- 여기에 외부 카운터 코드 삽입 -->
+                    <div align=center><a href='https://www.counter12.com'><img src='https://www.counter12.com/img-a0wDx8cZzdA1xDdZ-26.gif' border='0' alt='free counter'></a><script type='text/javascript' src='https://www.counter12.com/ad.js?id=a0wDx8cZzdA1xDdZ'></script></div>
                 </div>
             </div>
-
         </div>
     </header>
 
-    <main>
-        <!-- Counter Section (연구소 기본 정보와 Metric 2/3로 대체) -->
-        <section class="py-12 bg-white border-b border-gray-100">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-lg font-semibold text-maljaram-primary uppercase tracking-wider mb-8">연구소 기본 정보 및 성과</h2>
+    <!-- Main Content Sections --><main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20">
+
+        <!-- Section 2: Research Info & Key Metrics (Counter Section + Contact Info) -->
+        <section class="bg-white p-8 rounded-xl shadow-xl border-t-4 border-maljaram-accent">
+            <h2 class="text-3xl font-extrabold text-gray-900 mb-8 text-center">연구소 정보 및 성과</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
-                    
-                    <!-- New Metric 1: 연구소 기본 정보 (전화/주소/시간) -->
-                    <div class="md:col-span-2 bg-gray-50 p-6 rounded-xl shadow-md text-left">
-                        <div class="text-xl font-bold text-gray-900 mb-4 border-b pb-2">말자람터 언어심리연구소</div>
-                        <ul class="space-y-3 text-gray-700">
-                            <li class="flex items-center">
-                                <i class="fa-solid fa-phone text-maljaram-accent mr-3 w-5"></i>
-                                <span class="font-semibold">전화:</span> 010-4438-5595
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa-solid fa-location-dot text-maljaram-accent mr-3 w-5 mt-1"></i>
-                                <div class="flex-1">
-                                    <span class="font-semibold block">주소:</span> 
-                                    부산광역시 동래구 금강로 27 2층
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa-solid fa-calendar-alt text-maljaram-accent mr-3 w-5 mt-1"></i>
-                                <div class="flex-1">
-                                    <span class="font-semibold block">운영 시간 (예약제):</span> 
-                                    평일 10:00 - 19:00, 토요일 10:00 - 15:00
-                                </div>
-                            </li>
-                        </ul>
-                        <!-- 상담 예약 버튼 추가 -->
-                        <div class="mt-6 text-center">
-                            <a href="/maljaram/contact.html" class="inline-flex items-center px-4 py-2 text-sm font-semibold rounded-full text-white bg-maljaram-primary hover:bg-blue-700 transition duration-300 shadow-md">
-                                상담 예약 바로가기
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Metric 2: 초기 진단 정확도 -->
-                    <div class="p-6 bg-maljaram-primary/5 rounded-xl shadow-md flex flex-col justify-center items-center">
-                        <p class="text-6xl font-extrabold text-maljaram-accent">95%</p>
-                        <p class="mt-2 text-lg text-gray-700 font-medium">초기 진단 정확도</p>
-                    </div>
-                    
-                    <!-- Metric 3: 아이 발달 개선율 -->
-                    <div class="p-6 bg-maljaram-primary/5 rounded-xl shadow-md flex flex-col justify-center items-center">
-                        <p class="text-6xl font-extrabold text-maljaram-accent">92%</p>
-                        <p class="mt-2 text-lg text-gray-700 font-medium">아이 발달 개선율</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 2. G2 사업 요약 Section (Problem & Solution 대체) -->
-        <section class="py-20 bg-gray-50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-lg font-semibold text-maljaram-primary uppercase tracking-wider mb-2 text-center">정부 지원 사업 안내</h2>
-                <h3 class="text-3xl font-extrabold text-gray-900 mb-10 text-center">2026 아동·청소년 심리치유지원사업(G2) 핵심 요약</h3>
-                
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    
-                    <!-- Left Panel: Summary & Key Facts -->
-                    <div class="lg:col-span-1 flex flex-col gap-6">
-                        <!-- Summary -->
-                        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-                            <div class="g2-card-title">사업 개요 (Executive Summary)</div>
-                            <p class="text-gray-700 leading-relaxed">
-                                지투(G2) 사업은 만 18세 이하 아동·청소년의 정서·행동 문제를 지원하는 정부 바우처 서비스입니다. 소득 수준에 따라 최대 90%까지 비용을 지원받으며 심리상담, 놀이·미술치료 등을 이용할 수 있습니다. 2026년 1월 신청이 시작됩니다.
-                            </p>
-                        </div>
-                        
-                        <!-- Key Facts -->
-                        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-                            <div class="g2-card-title">핵심 요약 정보 (Key Facts)</div>
-                            <div class="grid grid-cols-2 gap-x-4 gap-y-6">
-                                <div class="flex items-start gap-3 g2-kpi-item">
-                                    <span class="text-2xl pt-1">📅</span>
-                                    <div>
-                                        <div class="g2-kpi-value">1월 접수</div>
-                                        <div class="text-sm text-gray-600">2026년 신청 시작 (동주민센터)</div>
-                                    </div>
-                                </div>
-                                <div class="flex items-start gap-3 g2-kpi-item">
-                                    <span class="text-2xl pt-1">🏫</span>
-                                    <div>
-                                        <div class="g2-kpi-value">학교 추천</div>
-                                        <div class="text-sm text-gray-600">담임교사 추천 시 우선순위 선정</div>
-                                    </div>
-                                </div>
-                                <div class="flex items-start gap-3 g2-kpi-item">
-                                    <span class="text-2xl pt-1">👥</span>
-                                    <div>
-                                        <div class="g2-kpi-value">만 18세</div>
-                                        <div class="text-sm text-gray-600">지원 대상 (모든 아동·청소년)</div>
-                                    </div>
-                                </div>
-                                <div class="flex items-start gap-3 g2-kpi-item">
-                                    <span class="text-2xl pt-1">🔒</span>
-                                    <div>
-                                        <div class="g2-kpi-value">비밀 보장</div>
-                                        <div class="text-sm text-gray-600">생활기록부/보험 기록 미포함</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Middle Panel: Cost Structure Chart & Key Points (Simplified Layout for responsiveness) -->
-                    <div class="lg:col-span-2 flex flex-col gap-6">
-                        
-                        <!-- Chart Container -->
-                        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-                            <div class="g2-card-title">1등급(저소득) 기준 비용 구조 예시</div>
-                            <div class="g2-bar-chart">
-                                <!-- 수정: 겹침 방지를 위해 텍스트 크기를 줄이고 위치를 고정했습니다. -->
-                                <p class="chart-title-fixed">정부 지원금 vs 본인 부담금 비교 (1등급 기준)</p>
-                                
-                                <div class="flex h-full w-4/5 justify-center items-end gap-10 pt-8">
-                                    
-                                    <!-- 막대 1: 총액 -->
-                                    <div class="flex flex-col items-center h-full w-16">
-                                        <div class="w-full text-center text-lg font-bold text-gray-600 mb-2">총액</div>
-                                        <div class="w-full h-full bg-gray-200 rounded-lg flex items-end justify-center text-gray-800 font-bold p-2 shadow-inner">100%</div>
-                                    </div>
-                                    
-                                    <!-- 막대 2: 지원 -->
-                                    <div class="flex flex-col items-center h-full w-16">
-                                        <div class="w-full text-center text-lg font-bold text-gray-600 mb-2">지원</div>
-                                        <div class="w-full chart-bar-support rounded-t-lg flex items-end justify-center p-2 text-white font-bold" style="height: 90%; background-color: #3B82F6;">90%</div>
-                                    </div>
-                                    
-                                    <!-- 막대 3: 부담 -->
-                                    <div class="flex flex-col items-center h-full w-16">
-                                        <div class="w-full text-center text-lg font-bold text-gray-600 mb-2">부담</div>
-                                        <div class="w-full chart-bar-self rounded-t-lg flex items-end justify-center p-2 text-white font-bold" style="height: 10%; background-color: #10B981;">10%</div>
-                                    </div>
-                                </div>
-                                
-                                <p class="mt-4 text-xs text-gray-600">* 1등급 기준: 월 18만원 중 약 16.2만원 지원 (본인부담 1.8만원)<br>* 소득 구간별 본인부담금 상이, 저소득층 최대 지원</p>
-                            </div>
-                        </div>
-
-                        <!-- Key Points and Strategy (Combined into a single section for better flow on mobile) -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 flex-grow">
-                            
-                            <!-- Key Points List -->
-                            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-                                <div class="g2-card-title">주요 체크 포인트</div>
-                                <ul class="space-y-3 list-disc pl-5 text-gray-700">
-                                    <li class="text-sm">
-                                        <strong>우선순위 선점 전략:</strong> 학령기 아동은 '학교 담임교사 추천서' 제출 시 선정 확률 및 우선순위가 대폭 상승합니다.
-                                    </li>
-                                    <li class="text-sm">
-                                        <strong>맞춤형 치료 프로그램:</strong> 심리상담뿐만 아니라 언어, 인지, 놀이, 미술 치료 및 부모 코칭 등 1:1 맞춤형 서비스를 제공합니다.
-                                    </li>
-                                    <li class="text-sm">
-                                        <strong>안전한 비밀 보장:</strong> 상담 내용은 철저히 비밀이 보장되며, 학교 생활기록부나 추후 보험 가입 등에 전혀 불이익이 없습니다.
-                                    </li>
-                                    <li class="text-sm">
-                                        <strong>사전 준비 필수:</strong> 1월 신청 기간에 몰릴 수 있으므로, 12월 중 추천서 및 필요 서류를 미리 준비하는 것이 유리합니다.
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                            <!-- Strategic Suggestion -->
-                            <div class="p-6 bg-maljaram-primary/10 border-l-4 border-maljaram-primary rounded-lg text-center shadow-md flex items-center justify-center">
-                                <div>
-                                    <strong class="text-maljaram-primary text-md">전략적 제언:</strong>
-                                    <p class="text-gray-800 text-sm mt-2 font-medium">2026년 1월 신청 시작 전, 12월 중에 학교 추천서를 미리 확보하여 서비스 선정 확률을 높이는 것이 가장 중요합니다.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. Key Features Section -->
-        <section class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-lg font-semibold text-maljaram-primary uppercase tracking-wider mb-2">Key Features</h2>
-                <h3 class="text-3xl font-extrabold text-gray-900 mb-12">말자람터만의 차별화된 3가지 핵심 가치</h3>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                    
-                    <!-- Feature 1 -->
-                    <div class="p-8 bg-white rounded-xl shadow-lg transform transition duration-300 hover:shadow-xl hover:scale-[1.01]">
-                        <div class="inline-block p-4 rounded-full bg-maljaram-primary/10 text-maljaram-primary mb-4">
-                            <i class="fa-solid fa-magnifying-glass text-3xl"></i>
-                        </div>
-                        <h4 class="text-xl font-bold text-gray-900 mb-3">360° 통합 발달 진단</h4>
-                        <p class="text-gray-600">언어, 정서, 인지 영역을 아우르는 정밀 진단 시스템으로 근본적인 문제를 파악합니다.</p>
-                    </div>
-                    
-                    <!-- Feature 2 -->
-                    <div class="p-8 bg-white rounded-xl shadow-lg transform transition duration-300 hover:shadow-xl hover:scale-[1.01]">
-                        <div class="inline-block p-4 rounded-full bg-maljaram-accent/10 text-maljaram-accent mb-4">
-                            <i class="fa-solid fa-puzzle-piece text-3xl"></i>
-                        </div>
-                        <h4 class="text-xl font-bold text-gray-900 mb-3">아이 맞춤형 개별 치료 계획</h4>
-                        <p class="text-gray-600">언어, 놀이, 미술 전문가가 협업하여 아이의 특성에 최적화된 치료를 진행합니다.</p>
-                    </div>
-                    
-                    <!-- Feature 3 (부모 교육 & 자료실 - 블로그 연결) -->
-                    <a href="https://blog.naver.com/audifox" target="_blank" class="p-8 bg-white rounded-xl shadow-lg transform transition duration-300 hover:shadow-xl hover:scale-[1.01] flex flex-col justify-between">
+                <!-- Left: Key Metrics -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold text-maljaram-primary border-b pb-2 mb-4">핵심 성과 지표</h3>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-maljaram-primary/10 text-maljaram-primary rounded-full flex items-center justify-center text-2xl"><i class="fa-solid fa-medal"></i></div>
                         <div>
-                            <div class="inline-block p-4 rounded-full bg-maljaram-primary/10 text-maljaram-primary mb-4">
-                                <i class="fa-solid fa-book-open text-3xl"></i>
-                            </div>
-                            <h4 class="text-xl font-bold text-gray-900 mb-3">부모 교육 & 자료실</h4>
-                            <p class="text-gray-600">가정에서의 긍정적 변화를 위한 부모 교육 세션과 전문 자료를 상시 제공합니다.</p>
+                            <p class="text-2xl font-extrabold text-gray-900">95%</p>
+                            <p class="text-sm text-gray-600">초기 진단 정확도 만족</p>
                         </div>
-                        <div class="mt-4">
-                            <span class="text-sm font-bold text-maljaram-primary border-b-2 border-maljaram-primary pb-1">네이버 블로그 바로가기 <i class="fa-solid fa-arrow-right text-xs ml-1"></i></span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-maljaram-accent/10 text-maljaram-accent rounded-full flex items-center justify-center text-2xl"><i class="fa-solid fa-child-reaching"></i></div>
+                        <div>
+                            <p class="text-2xl font-extrabold text-gray-900">92%</p>
+                            <p class="text-sm text-gray-600">아이 발달 개선율 (6개월 기준)</p>
                         </div>
-                    </a>
+                    </div>
+                </div>
+
+                <!-- Right: Research Contact Info -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold text-maljaram-primary border-b pb-2 mb-4">연구소 기본 정보</h3>
+                    <div class="flex items-center space-x-4 text-gray-700">
+                        <i class="fa-solid fa-phone w-5 h-5 text-maljaram-accent"></i>
+                        <div><span class="font-semibold">전화:</span> 010-4438-5595</div>
+                    </div>
+                    <div class="flex items-start space-x-4 text-gray-700">
+                        <i class="fa-solid fa-location-dot w-5 h-5 text-maljaram-accent mt-1"></i>
+                        <div><span class="font-semibold">주소:</span> 부산광역시 동래구 금강로 27 2층</div>
+                    </div>
+                    <div class="flex items-start space-x-4 text-gray-700">
+                        <i class="fa-solid fa-clock w-5 h-5 text-maljaram-accent mt-1"></i>
+                        <div>
+                            <span class="font-semibold">운영 시간:</span> 
+                            평일 10:00 - 19:00 (예약제)<br>
+                            토요일 10:00 - 15:00 (예약제)
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 4. Social Proof Section (후기 슬라이더 적용) -->
-        <section class="py-20 bg-maljaram-primary/5">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-lg font-semibold text-maljaram-primary uppercase tracking-wider mb-8">Social Proof & Trust</h2>
+
+        <!-- Section 3: G2 Program Summary (Replaced Problem & Solution) -->
+        <section class="bg-white p-8 rounded-xl shadow-xl border-t-4 border-maljaram-primary">
+            <h2 class="text-3xl font-extrabold text-gray-900 mb-8 text-center">G2 아동·청소년 심리치유지원사업 핵심 요약</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 
-                <!-- Testimonial Slider Area -->
-                <div class="bg-white p-8 rounded-xl shadow-2xl border-l-4 border-maljaram-accent relative min-h-[180px] flex items-center justify-center overflow-hidden">
-                    <i class="fa-solid fa-quote-left text-3xl text-gray-300 absolute top-6 left-6 z-0"></i>
-                    <!-- Slider Content Wrapper -->
-                    <div id="testimonial-slider" class="relative w-full text-center testimonial-fade opacity-0 z-10">
-                        <!-- Content will be injected by JS -->
+                <!-- Card 1: 사업 개요 & Key Facts -->
+                <div class="lg:col-span-1 bg-gray-50 p-6 rounded-xl border border-gray-200 space-y-6">
+                    <h3 class="text-xl font-bold text-maljaram-primary border-b pb-2">사업 개요 및 대상</h3>
+                    <p class="text-gray-600">
+                        G2 사업은 만 18세 이하 아동·청소년의 정서·행동 문제를 지원하는 정부 바우처 서비스입니다. 소득 수준에 따라 최대 90%까지 비용을 지원받습니다.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3"><span class="text-2xl text-maljaram-accent font-bold">📅</span><div><div class="font-bold text-lg text-gray-900">2026년 1월 접수 시작</div><div class="text-sm text-gray-600">신청: 동주민센터 방문 접수</div></div></div>
+                        <div class="flex items-start gap-3"><span class="text-2xl text-maljaram-accent font-bold">👥</span><div><div class="font-bold text-lg text-gray-900">만 18세 이하 지원</div><div class="text-sm text-gray-600">모든 아동·청소년 대상</div></div></div>
                     </div>
                 </div>
+
+                <!-- Card 2: 비용 구조 차트 -->
+                <div class="lg:col-span-1 bg-gray-50 p-6 rounded-xl border border-gray-200 relative">
+                    <h3 class="text-xl font-bold text-maljaram-primary border-b pb-2 mb-4">1등급 (저소득) 기준 비용 구조</h3>
+                    <div class="chart-placeholder relative h-48 flex flex-col justify-end items-center p-4">
+                        <div class="chart-title-overlay text-gray-700 text-sm font-semibold mb-2">정부 지원금 vs 본인 부담금 비교 (1등급 기준)</div>
+                        <div class="chart-bar-container w-full h-32 flex justify-center items-end gap-5">
+                            
+                            <!-- Bar 1: 총액 -->
+                            <div class="h-full w-1/4 bg-gray-300 rounded-t-lg shadow-md flex flex-col justify-end items-center text-gray-700 font-bold text-xs" style="height: 100%;">
+                                <div class="mb-1">총액</div>100%
+                            </div>
+                            
+                            <!-- Bar 2: 지원 -->
+                            <div class="w-1/4 bg-maljaram-primary rounded-t-lg shadow-md flex flex-col justify-end items-center text-white font-bold text-xs" style="height: 90%;">
+                                <div class="mb-1">지원</div>90%
+                            </div>
+                            
+                            <!-- Bar 3: 부담 -->
+                            <div class="w-1/4 bg-red-400 rounded-t-lg shadow-md flex flex-col justify-end items-center text-white font-bold text-xs" style="height: 10%;">
+                                <div class="mb-1">부담</div>10%
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-600 mt-4 text-center">* 1등급 기준: 월 18만원 중 약 16.2만원 지원 (본인부담 1.8만원)<br>* 소득 구간별 본인부담금 상이</p>
+                    </div>
+                </div>
+
+                <!-- Card 3: 주요 체크 포인트 -->
+                <div class="lg:col-span-1 bg-gray-50 p-6 rounded-xl border border-gray-200 space-y-6">
+                    <h3 class="text-xl font-bold text-maljaram-primary border-b pb-2">신청 핵심 전략</h3>
+                    <ul class="space-y-3 list-disc list-inside text-gray-600 text-sm">
+                        <li><strong class="text-maljaram-accent">우선순위 선점:</strong> 학령기 아동은 '학교 담임교사 추천서' 제출 시 선정 확률이 대폭 상승합니다.</li>
+                        <li><strong class="text-maljaram-accent">사전 준비 필수:</strong> 1월 신청 기간에 앞서 12월 중 추천서 및 필요 서류를 미리 준비해야 유리합니다.</li>
+                        <li><strong class="text-maljaram-accent">비밀 보장:</strong> 상담 내용은 철저히 비밀이 보장되며, 생활기록부나 보험 가입에 불이익이 없습니다.</li>
+                        <li><strong class="text-maljaram-accent">맞춤형 치료:</strong> 심리상담, 언어/놀이/미술 치료 등 1:1 맞춤형 서비스를 제공합니다.</li>
+                    </ul>
+                    <div class="bg-maljaram-primary/10 text-maljaram-primary p-3 rounded-lg text-center font-bold text-sm">
+                        2026년 1월 신청 전, 12월에 미리 준비하세요!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Section 4: Key Features -->
+        <section class="py-12">
+            <h2 class="text-3xl font-extrabold text-gray-900 mb-10 text-center">말자람터의 3가지 핵심 가치</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Feature 1: 통합 발달 진단 -->
+                <div class="p-8 bg-white rounded-xl shadow-lg transform transition duration-300 hover:shadow-xl hover:scale-[1.01]">
+                    <div class="inline-block p-4 rounded-full bg-maljaram-primary/10 text-maljaram-primary mb-4">
+                        <i class="fa-solid fa-magnifying-glass text-3xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">360° 통합 발달 진단</h4>
+                    <p class="text-gray-600">언어, 정서, 인지 영역을 아우르는 정밀 진단 시스템으로 근본적인 문제를 파악합니다.</p>
+                </div>
+
+                <!-- Feature 2: 맞춤형 심리 치료 -->
+                <div class="p-8 bg-white rounded-xl shadow-lg transform transition duration-300 hover:shadow-xl hover:scale-[1.01]">
+                    <div class="inline-block p-4 rounded-full bg-maljaram-primary/10 text-maljaram-primary mb-4">
+                        <i class="fa-solid fa-puzzle-piece text-3xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">아이 맞춤형 개별 치료 계획</h4>
+                    <p class="text-gray-600">언어, 놀이, 미술 전문가가 협업하여 아이의 특성에 최적화된 치료를 진행합니다.</p>
+                </div>
+
+                <!-- Feature 3: 부모 교육 & 자료실 (블로그 연결) -->
+                <a href="https://blog.naver.com/audifox" target="_blank" class="p-8 bg-white rounded-xl shadow-lg transform transition duration-300 hover:shadow-xl hover:scale-[1.01] hover:border-maljaram-accent border border-white block">
+                    <div class="inline-block p-4 rounded-full bg-maljaram-primary/10 text-maljaram-primary mb-4">
+                        <i class="fa-solid fa-book-open text-3xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">부모 교육 & 자료실 (클릭)</h4>
+                    <p class="text-gray-600">가정에서의 긍정적 변화를 위한 부모 교육 세션과 전문 자료를 네이버 블로그에서 상시 제공합니다.</p>
+                </a>
+            </div>
+        </section>
+
+
+        <!-- Section 5: Social Proof (Rotating Testimonials) -->
+        <section class="bg-white p-8 rounded-xl shadow-xl border-t-4 border-maljaram-accent text-center">
+            <h2 class="text-3xl font-extrabold text-gray-900 mb-4">부모님이 증명하는 치유의 힘</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-8">
+                <!-- Left: Static Metrics -->
+                <div class="p-6 bg-gray-50 rounded-lg border">
+                    <p class="text-4xl font-extrabold text-maljaram-primary mb-1">95%</p>
+                    <p class="text-sm text-gray-600 font-semibold">초기 진단 정확도 만족</p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-lg border">
+                    <p class="text-4xl font-extrabold text-maljaram-accent mb-1">92%</p>
+                    <p class="text-sm text-gray-600 font-semibold">아이 발달 개선율 (6개월 기준)</p>
+                </div>
+            </div>
+
+            <!-- Rotating Testimonial Slider -->
+            <div id="testimonial-slider-container" class="testimonial-container mt-8 relative">
+                <div id="testimonial-slider">
+                    <!-- JS will insert testimonial items here -->
+                </div>
+                <p class="text-xs text-gray-400 mt-4">후기는 5초마다 자동 변경됩니다.</p>
             </div>
         </section>
 
     </main>
 
-    <!-- JavaScript for Mobile Menu Toggle and Testimonial Slider -->
-    <script>
-        // Mobile Menu Toggle Logic
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIconOpen = document.getElementById('menu-icon-open');
-        const menuIconClose = document.getElementById('menu-icon-close');
 
-        mobileMenuButton.addEventListener('click', () => {
-            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
-            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
-            mobileMenu.classList.toggle('hidden');
-            
-            // Toggle icons
-            menuIconOpen.classList.toggle('hidden');
-            menuIconClose.classList.toggle('hidden');
-        });
-
-        // --- Testimonial Slider Logic ---
-        
-        // 1. 후기 데이터 배열 (10가지로 확장)
+    <!-- JavaScript for Mobile Menu Toggle and Testimonial Slider --><script>
+        // Testimonial Data (10 cases)
         const testimonials = [
-            // 1. 기존 후기 (언어/소통)
-            {
-                quote: "처음에는 망설였지만, 아이가 매주 '선생님 만나러 가자'고 조를 정도로 즐거워합니다. 덕분에 말이 트이고 눈맞춤도 훨씬 자연스러워졌어요.",
-                author: "이*희 (5세 자녀 부모)"
-            },
-            // 2. 기존 후기 (정서/놀이)
-            {
-                quote: "분노 조절이 안 되어 집안 분위기가 힘들었는데, 놀이치료 후 아이가 자신의 감정을 말로 표현하는 법을 배워 가족 모두가 행복해졌습니다.",
-                author: "김*진 (4세 자녀 부모)"
-            },
-            // 3. 기존 후기 (사회성/그룹)
-            {
-                quote: "소극적이던 아이가 그룹 치료를 통해 학교생활에 자신감을 얻었습니다. 새로운 도전에 용기를 갖게 되었고 친구들과 잘 어울립니다.",
-                author: "최*영 (7세 자녀 부모)"
-            },
-            // 4. 새로운 후기 (미술 심리)
-            {
-                quote: "말로 표현하지 못하던 내면의 불안감을 그림을 통해 안전하게 표출했습니다. 아이의 심리가 안정되니 밤에 잠도 잘 자고 밝아졌어요.",
-                author: "박*연 (6세 자녀 부모)"
-            },
-            // 5. 새로운 후기 (조음/발음)
-            {
-                quote: "친구들이 아이의 말을 못 알아들어서 속상했는데, 3개월 만에 발음이 명확해졌습니다. 이제 당당하게 대화하는 아이를 보니 정말 뿌듯합니다.",
-                author: "한*수 (8세 자녀 부모)"
-            },
-            // 6. 새로운 후기 (자존감/자신감)
-            {
-                quote: "늘 주눅 들어 있던 아이가 치료실에 갈 때마다 자신감이 붙어옵니다. 선생님이 아이의 강점을 찾아 격려해 주신 덕분입니다.",
-                author: "정*민 (9세 자녀 부모)"
-            },
-            // 7. 새로운 후기 (부모 교육 연계)
-            {
-                quote: "아이뿐만 아니라 부모 교육을 통해 가정에서 어떻게 상호작용해야 할지 배웠습니다. 치료실에서의 변화가 집에서도 이어지니 효과가 두 배입니다.",
-                author: "윤*아 (5세 자녀 부모)"
-            },
-            // 8. 새로운 후기 (청소년 정서)
-            {
-                quote: "사춘기로 접어들면서 대화가 단절되었는데, 전문가의 도움으로 아이의 마음을 이해하게 되었습니다. 관계 회복의 중요한 전환점이 되었습니다.",
-                author: "이*철 (14세 자녀 부모)"
-            },
-            // 9. 새로운 후기 (집중력/행동)
-            {
-                quote: "앉아있는 것조차 힘들었던 아이가 이제는 놀이에 집중하고 과제도 스스로 시작합니다. 행동 변화가 눈에 띄게 나타나 놀랍습니다.",
-                author: "오*지 (6세 자녀 부모)"
-            },
-            // 10. 새로운 후기 (첫 시작의 망설임)
-            {
-                quote: "치료를 시작하기까지 1년을 고민했는데, 상담 후 늦지 않았다는 확신을 얻었습니다. 불안했던 시작을 용기로 바꿔주셔서 감사합니다.",
-                author: "신*혜 (3세 자녀 부모)"
-            }
+            { quote: "6개월 언어치료 후 아이가 스스로 '엄마 이거 해줘'라고 말하는 기적을 경험했어요. 발음도 또렷해졌습니다.", author: "김*윤 (5세 자녀 부모)", area: "언어" },
+            { quote: "분노 조절이 안 되어 힘들었는데, 놀이치료 후 '엄마 속상해요'라고 감정을 말로 표현합니다. 가족이 행복해졌어요.", author: "이*진 (4세 자녀 부모)", area: "정서/행동" },
+            { quote: "소극적이던 아이가 그룹 치료 후 학교생활에 자신감을 얻고 친구들에게 먼저 다가가기 시작했습니다.", author: "최*영 (7세 자녀 부모)", area: "사회성" },
+            { quote: "자존감이 낮아 늘 비교하던 아이가, 치료를 통해 '나는 괜찮은 아이'라는 것을 알게 되었습니다. 표정이 밝아졌어요.", author: "이*현 (10세 자녀 부모)", area: "자존감" },
+            { quote: "사춘기 자녀와 관계가 단절되어 힘들었는데, 전문가 중재 덕분에 아이와 대화의 물꼬가 트였습니다.", author: "박*철 (15세 자녀 부모)", area: "청소년 상담" },
+            { quote: "두 돌이 지나도 낱말만 말하던 아이가 조기 언어치료 4개월 만에 3단어 문장을 구사하기 시작했습니다. 정말 잘했어요!", author: "신*영 (3세 자녀 부모)", area: "조기 언어" },
+            { quote: "아이가 그린 그림을 통해 숨겨진 불안감을 파악하고, 미술심리를 통해 마음의 안정을 찾았습니다.", author: "정*희 (6세 자녀 부모)", area: "미술심리" },
+            { quote: "놀이치료실의 분리된 환경 덕분에, 아이가 치료에 더욱 집중하고 안정감을 느꼈습니다.", author: "한*수 (4세 자녀 부모)", area: "놀이 환경" },
+            { quote: "부모 코칭 세션에서 배운 상호작용법을 가정에 적용하니, 아이의 긍정적 변화 속도가 빨라졌습니다.", author: "윤*미 (8세 자녀 부모)", area: "부모 코칭" },
+            { quote: "G2 바우처 신청 과정이 복잡했는데, 연구소의 도움으로 쉽게 선정되어 치료를 시작할 수 있었습니다.", author: "강*민 (저소득층 부모)", area: "바우처 지원" },
         ];
-
         let currentTestimonialIndex = 0;
         const sliderElement = document.getElementById('testimonial-slider');
 
-        // 후기 내용을 업데이트하는 함수
-        function updateTestimonial(index) {
-            const t = testimonials[index];
-            sliderElement.innerHTML = `
-                <p class="text-xl italic text-gray-800 leading-relaxed mb-4">
-                    ${t.quote}
+        const renderTestimonial = (index) => {
+            if (!sliderElement) return;
+
+            const item = testimonials[index];
+            const div = document.createElement('div');
+            div.className = 'testimonial-item active';
+            div.innerHTML = `
+                <p class="text-xl italic text-gray-800 font-medium mb-3 relative">
+                    <i class="fa-solid fa-quote-left text-maljaram-accent text-base mr-2"></i>
+                    ${item.quote}
+                    <i class="fa-solid fa-quote-right text-maljaram-accent text-base ml-2"></i>
                 </p>
-                <p class="mt-4 text-maljaram-primary font-semibold">- ${t.author}</p>
+                <p class="text-sm font-semibold text-gray-600">— ${item.author} <span class="text-xs text-gray-500">(${item.area} 영역)</span></p>
             `;
-        }
 
-        // 다음 후기로 전환하는 함수 (Fade In/Out 효과 포함)
-        function nextTestimonial() {
-            // Fade out
-            sliderElement.classList.remove('opacity-100');
-            sliderElement.classList.add('opacity-0');
+            // Remove existing items and add new one with transition effect
+            sliderElement.innerHTML = '';
+            sliderElement.appendChild(div);
+        };
 
-            setTimeout(() => {
-                // Change content after fading out
-                currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
-                updateTestimonial(currentTestimonialIndex);
+        const cycleTestimonials = () => {
+            currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
+            renderTestimonial(currentTestimonialIndex);
+        };
+
+        // Initialize slider and set interval
+        window.onload = () => {
+            // Mobile Menu Toggle Logic
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIconOpen = document.getElementById('menu-icon-open');
+            const menuIconClose = document.getElementById('menu-icon-close');
+
+            mobileMenuButton.addEventListener('click', () => {
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('hidden');
                 
-                // Fade in
-                sliderElement.classList.remove('opacity-0');
-                sliderElement.classList.add('opacity-100');
-            }, 1000); // 1000ms (1초)는 CSS transition 시간과 일치해야 합니다.
-        }
-
-        // 초기 로드 시 첫 번째 후기 표시 및 카운터 시작
-        window.onload = function() {
-            // Testimonial Slider Start
-            updateTestimonial(currentTestimonialIndex);
-            sliderElement.classList.add('opacity-100');
-            setInterval(nextTestimonial, 5000); 
-        }
-
+                // Toggle icons
+                menuIconOpen.classList.toggle('hidden');
+                menuIconClose.classList.toggle('hidden');
+            });
+            
+            // Start Testimonial Slider
+            renderTestimonial(0); // Show first testimonial immediately
+            setInterval(cycleTestimonials, 5000); // Change every 5 seconds
+        };
     </script>
 </body>
 </html>
