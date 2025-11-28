@@ -24,39 +24,15 @@
     </script>
     <style>
         body { font-family: 'Inter', sans-serif; color: #1f2937; }
-        .case-study-card {
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease;
-        }
-        .case-study-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-        .before-after-box {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-        .before-text {
-            color: #ef4444; /* Red */
-            background-color: #fef2f2;
-            padding: 5px 10px;
-            border-radius: 6px;
-        }
-        .after-text {
-            color: #10B981; /* Accent Green */
-            background-color: #ecfdf5;
-            padding: 5px 10px;
-            border-radius: 6px;
-        }
+        .review-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .review-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .review-header { background-color: #f7f9fc; border-bottom: 2px solid #e5e7eb; }
+        .badge { display: inline-block; padding: 4px 10px; border-radius: 9999px; font-weight: 600; font-size: 0.75rem; }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col">
 
-    <!-- Navigation Bar (GNB) --><nav class="bg-white shadow-md sticky top-0 z-50">
+    <!-- Navigation Bar (GNB) - 5개 메뉴 포함 --><nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
                 <div class="flex-shrink-0 flex items-center">
@@ -67,13 +43,13 @@
                 <!-- Desktop Menu --><div class="hidden md:flex md:space-x-8 items-center">
                     <a href="/maljaram/about.html" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg">소개</a>
                     <a href="/maljaram/programs.html" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg">프로그램</a>
-                    <!-- 메뉴 이름 '치유의 발자취' 강조 -->
                     <a href="/maljaram/experts.html" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg font-bold text-maljaram-primary border-b-2 border-maljaram-primary">치유의 발자취</a>
+                    <a href="/maljaram/announcements.html" class="text-gray-600 hover:text-maljaram-primary transition duration-300 font-medium p-2 rounded-lg">공지사항</a>
                     <a href="/maljaram/contact.html" class="px-5 py-2 text-sm font-semibold rounded-full text-white bg-maljaram-accent hover:bg-emerald-600 transition duration-300 shadow-md hover:shadow-lg">
                         1:1 상담/예약
                     </a>
                 </div>
-                <!-- Mobile Menu Button (JS logic included below) --><div class="md:hidden flex items-center">
+                <!-- Mobile Menu Button --><div class="md:hidden flex items-center">
                     <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-maljaram-primary" aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">메인 메뉴 열기</span>
                         <i class="fa-solid fa-bars h-6 w-6" id="menu-icon-open"></i>
@@ -87,181 +63,175 @@
                 <a href="/maljaram/about.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">소개</a>
                 <a href="/maljaram/programs.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">프로그램</a>
                 <a href="/maljaram/experts.html" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-maljaram-primary text-center">치유의 발자취</a>
+                <a href="/maljaram/announcements.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">공지사항</a>
                 <a href="/maljaram/contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">1:1 상담/예약</a>
             </div>
         </div>
     </nav>
     
     <main class="flex-grow py-16">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- Header Copy -->
-            <div class="text-center mb-16">
-                <p class="text-maljaram-accent font-semibold text-lg uppercase tracking-wider mb-2">Before & After</p>
+            <div class="text-center mb-16 max-w-4xl mx-auto">
                 <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight leading-snug">
-                    <span class="text-maljaram-primary">불안에서 희망으로</span>, 아이들의 치유 발자취
+                    <span class="text-maljaram-accent">불안에서 확신으로</span>: 아이들의 변화를 기록한 치유의 발자취
                 </h1>
                 <p class="mt-4 text-xl text-gray-600">
-                    말자람터의 통합 치료(언어, 놀이, 미술, 그룹)가 아이의 삶을 어떻게 변화시키는지 구체적인 사례로 확인하세요.
+                    부모님들이 직접 경험한 아이들의 Before와 After를 통해 말자람터의 전문성을 확인하세요.
                 </p>
             </div>
 
-            <!-- Case Study Grid (총 6개 사례를 위한 3열 그리드) -->
+            <!-- Review Grid (6 cases: 3 columns x 2 rows) -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                
-                <!-- Case Study 1: 언어 발달 지연 -->
-                <div class="case-study-card bg-white p-8 border-t-4 border-maljaram-primary">
-                    <h2 class="text-2xl font-bold text-maljaram-primary mb-4 flex items-center"><i class="fa-solid fa-comments text-xl mr-3"></i> 언어 및 의사소통 발달</h2>
-                    <p class="italic text-gray-700 mb-6">"말이 느려 어린이집 적응을 힘들어하던 5세 아이의 이야기"</p>
-                    
-                    <div class="space-y-4 text-left">
-                        <p class="text-gray-800">
-                            <strong class="text-red-500"><i class="fa-solid fa-times-circle mr-2"></i> 문제점:</strong> 2단어 문장 구사 불가, 호명 반응 미약, 발음 부정확.
-                        </p>
-                        <p class="text-gray-800">
-                            <strong class="text-orange-500"><i class="fa-solid fa-bullseye mr-2"></i> 목표:</strong> 일상적인 4단어 문장 사용 및 감정 표현 어휘 확장.
-                        </p>
-                        <p class="text-gray-800">
-                            <strong class="text-maljaram-accent"><i class="fa-solid fa-check-circle mr-2"></i> 결과:</strong> 6개월 후, 또래 수준의 의사소통 및 또렷한 발음으로 또래와 상호작용 성공.
-                        </p>
+
+                <!-- Case 1: 언어 발달 지연 (언어 치료) -->
+                <div class="review-card bg-white rounded-2xl shadow-lg border-t-4 border-maljaram-primary overflow-hidden">
+                    <div class="review-header p-5 flex justify-between items-center">
+                        <span class="badge bg-maljaram-primary/10 text-maljaram-primary">#언어발달</span>
+                        <p class="text-sm font-semibold text-gray-800">김*윤 (5세 자녀)</p>
                     </div>
-                    
-                    <div class="before-after-box mt-6">
-                        <span class="before-text">Before: 낱말 나열</span>
-                        <span class="after-text">After: 문장 구사 성공</span>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">케이스 1. 2단어 문장이 어려웠던 아이</h3>
+                        <div class="space-y-4">
+                            <div class="border-b pb-3">
+                                <p class="font-bold text-red-500 mb-1 flex items-center"><i class="fa-solid fa-face-frown mr-2"></i> Before (문제점)</p>
+                                <p class="text-gray-700 text-sm">낱말만 사용하고, 의사 표현은 울음이나 손짓으로 대신함. 조음(발음) 오류가 심해 부모도 이해하기 어려웠음.</p>
+                            </div>
+                            <div>
+                                <p class="font-bold text-maljaram-accent mb-1 flex items-center"><i class="fa-solid fa-face-smile-beam mr-2"></i> After (결과)</p>
+                                <p class="text-gray-700 text-sm">6개월 후, 4~5단어 문장을 구사하고 친구들과 대화 가능. 자발적인 말하기가 늘어나 언어적 자신감 회복.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Case Study 2: 정서 및 행동 문제 -->
-                <div class="case-study-card bg-white p-8 border-t-4 border-maljaram-accent">
-                    <h2 class="text-2xl font-bold text-maljaram-accent mb-4 flex items-center"><i class="fa-solid fa-hand-holding-heart text-xl mr-3"></i> 정서 및 행동 조절</h2>
-                    <p class="italic text-gray-700 mb-6">"분노 조절이 어렵고 떼쓰기가 심했던 4세 아이의 이야기"</p>
-                    
-                    <div class="space-y-4 text-left">
-                        <p class="text-gray-800">
-                            <strong class="text-red-500"><i class="fa-solid fa-times-circle mr-2"></i> 문제점:</strong> 감정 표현을 울음이나 공격적 행동으로 대체, 잦은 분노 발작.
-                        </p>
-                        <p class="text-gray-800">
-                            <strong class="text-orange-500"><i class="fa-solid fa-bullseye mr-2"></i> 목표:</strong> 놀이를 통해 감정을 읽고, '속상해요' 등 언어로 감정을 표현하기.
-                        </p>
-                        <p class="text-gray-800">
-                            <strong class="text-maljaram-accent"><i class="fa-solid fa-check-circle mr-2"></i> 결과:</strong> 4개월 후, 떼쓰기 횟수 현저히 감소. 스스로 감정을 진정시키는 능력 향상.
-                        </p>
+                <!-- Case 2: 분리 불안 및 정서 불안 (놀이 치료) -->
+                <div class="review-card bg-white rounded-2xl shadow-lg border-t-4 border-maljaram-accent overflow-hidden">
+                    <div class="review-header p-5 flex justify-between items-center">
+                        <span class="badge bg-maljaram-accent/10 text-maljaram-accent">#정서안정</span>
+                        <p class="text-sm font-semibold text-gray-800">이*진 (4세 자녀)</p>
                     </div>
-
-                    <div class="before-after-box mt-6">
-                        <span class="before-text">Before: 분노 발작</span>
-                        <span class="after-text">After: 감정 표현 성공</span>
-                    </div>
-                </div>
-                
-                <!-- Case Study 3: 사회성 및 자존감 -->
-                <div class="case-study-card bg-white p-8 border-t-4 border-maljaram-primary">
-                    <h2 class="text-2xl font-bold text-maljaram-primary mb-4 flex items-center"><i class="fa-solid fa-users text-xl mr-3"></i> 사회성 및 또래 관계</h2>
-                    <p class="italic text-gray-700 mb-6">"친구들 사이에서 늘 소외되고 자신감이 부족했던 7세 아이의 이야기"</p>
-                    
-                    <div class="space-y-4 text-left">
-                        <p class="text-gray-800">
-                            <strong class="text-red-500"><i class="fa-solid fa-times-circle mr-2"></i> 문제점:</strong> 낮은 자존감, 또래 활동 회피, 눈 맞춤 어려움.
-                        </p>
-                        <p class="text-gray-800">
-                            <strong class="text-orange-500"><i class="fa-solid fa-bullseye mr-2"></i> 목표:</strong> 그룹 활동에 자발적으로 참여, 자신의 의견을 적절히 주장하기.
-                        </p>
-                        <p class="text-gray-800">
-                            <strong class="text-maljaram-accent"><i class="fa-solid fa-check-circle mr-2"></i> 결과:</strong> 그룹 치료 후 학교에서 먼저 친구들에게 말을 걸고, 자신감을 회복하여 리더십 발휘.
-                        </p>
-                    </div>
-
-                    <div class="before-after-box mt-6">
-                        <span class="before-text">Before: 또래 회피</span>
-                        <span class="after-text">After: 능동적 참여</span>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">케이스 2. 감정 조절이 어려워 떼쓰던 아이</h3>
+                        <div class="space-y-4">
+                            <div class="border-b pb-3">
+                                <p class="font-bold text-red-500 mb-1 flex items-center"><i class="fa-solid fa-face-frown mr-2"></i> Before (문제점)</p>
+                                <p class="text-gray-700 text-sm">분리 불안으로 어린이집 등원이 힘들었고, 화가 나면 무조건 울거나 물건을 던지는 등 행동 문제가 심했음.</p>
+                            </div>
+                            <div>
+                                <p class="font-bold text-maljaram-accent mb-1 flex items-center"><i class="fa-solid fa-face-smile-beam mr-2"></i> After (결과)</p>
+                                <p class="text-gray-700 text-sm">놀이를 통해 감정을 해소하고 '속상하다'고 말로 표현 시작. 등원 시 울음 시간이 30분에서 5분 이내로 단축됨.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Case Study 4: 부모 코칭 및 가정 연계 -->
-                <div class="case-study-card bg-white p-8 border-t-4 border-maljaram-accent">
-                    <h2 class="text-2xl font-bold text-maljaram-accent mb-4 flex items-center"><i class="fa-solid fa-house-chimney text-xl mr-3"></i> 부모-자녀 상호작용 개선</h2>
-                    <p class="italic text-gray-700 mb-6">"치료 효과가 가정에서 이어지지 않아 고민하던 부모님의 이야기"</p>
-                    
-                    <div class="space-y-4 text-left">
-                        <p class="text-gray-800">
-                            <strong class="text-red-500"><i class="fa-solid fa-times-circle mr-2"></i> 문제점:</strong> 치료실과 가정에서의 아이 행동 차이, 부모의 양육 태도 일관성 부족.
-                        </p>
-                        <p class="text-gray-800">
-                            <strong class="text-orange-500"><i class="fa-solid fa-bullseye mr-2"></i> 목표:</strong> 부모 코칭을 통해 일관된 긍정 양육 환경 조성, 치료 효과의 가정 확장.
-                        </p>
-                        <p class="text-gray-800">
-                            <strong class="text-maljaram-accent"><i class="fa-solid fa-check-circle mr-2"></i> 결과:</strong> 부모의 긍정 코칭 스킬 향상 후, 가정 내 소통 만족도 95% 이상 달성.
-                        </p>
+                <!-- Case 3: 소극적 태도 및 사회성 부족 (미술/그룹 치료) -->
+                <div class="review-card bg-white rounded-2xl shadow-lg border-t-4 border-maljaram-primary overflow-hidden">
+                    <div class="review-header p-5 flex justify-between items-center">
+                        <span class="badge bg-maljaram-primary/10 text-maljaram-primary">#사회성</span>
+                        <p class="text-sm font-semibold text-gray-800">최*영 (7세 자녀)</p>
                     </div>
-
-                    <div class="before-after-box mt-6">
-                        <span class="before-text">Before: 효과 단절</span>
-                        <span class="after-text">After: 가정 내 효과 지속</span>
-                    </div>
-                </div>
-                
-                <!-- Case Study 5: 그룹 수업 (새로 추가) -->
-                <div class="case-study-card bg-white p-8 border-t-4 border-maljaram-primary">
-                    <h2 class="text-2xl font-bold text-maljaram-primary mb-4 flex items-center"><i class="fa-solid fa-people-group text-xl mr-3"></i> 그룹 활동 및 규칙 준수</h2>
-                    <p class="italic text-gray-700 mb-6">"단체 활동 시 규칙을 따르지 않고 충동적인 행동을 보이던 8세 아이의 이야기"</p>
-                    
-                    <div class="space-y-4 text-left">
-                        <p class="text-gray-800">
-                            <strong class="text-red-500"><i class="fa-solid fa-times-circle mr-2"></i> 문제점:</strong> 그룹 활동 중 돌발 행동, 차례 기다리기 어려움, 과도한 자기중심성.
-                        </p>
-                        <p class="text-gray-800">
-                            <strong class="text-orange-500"><i class="fa-solid fa-bullseye mr-2"></i> 목표:</strong> 또래와의 상호작용 속에서 사회적 규칙 내면화 및 충동 조절 능력 향상.
-                        </p>
-                        <p class="text-gray-800">
-                            <strong class="text-maljaram-accent"><i class="fa-solid fa-check-circle mr-2"></i> 결과:</strong> 그룹 수업 참여 후, 학교 단체 활동 시 규칙 준수 능력이 향상되고 또래와 협동하는 모습 보임.
-                        </p>
-                    </div>
-
-                    <div class="before-after-box mt-6">
-                        <span class="before-text">Before: 충동적 행동</span>
-                        <span class="after-text">After: 규칙 준수 가능</span>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">케이스 3. 친구 관계가 어려웠던 초등학생</h3>
+                        <div class="space-y-4">
+                            <div class="border-b pb-3">
+                                <p class="font-bold text-red-500 mb-1 flex items-center"><i class="fa-solid fa-face-frown mr-2"></i> Before (문제점)</p>
+                                <p class="text-gray-700 text-sm">학교에서 소극적이고 말이 없어 친구들이 먼저 다가오지 않음. 발표를 극도로 두려워하고 눈치를 많이 봄.</p>
+                            </div>
+                            <div>
+                                <p class="font-bold text-maljaram-accent mb-1 flex items-center"><i class="fa-solid fa-face-smile-beam mr-2"></i> After (결과)</p>
+                                <p class="text-gray-700 text-sm">그룹 활동을 통해 자신감을 얻고, 수업 시간에 자발적으로 손을 들기 시작. 먼저 친구들에게 인사하며 활발해짐.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Case Study 6: 미술 수업 (새로 추가) -->
-                <div class="case-study-card bg-white p-8 border-t-4 border-maljaram-accent">
-                    <h2 class="text-2xl font-bold text-maljaram-accent mb-4 flex items-center"><i class="fa-solid fa-palette text-xl mr-3"></i> 미술을 통한 정서 해소</h2>
-                    <p class="italic text-gray-700 mb-6">"언어로 표현이 어려워 불안감이 높았던 6세 아이의 이야기"</p>
-                    
-                    <div class="space-y-4 text-left">
-                        <p class="text-gray-800">
-                            <strong class="text-red-500"><i class="fa-solid fa-times-circle mr-2"></i> 문제점:</strong> 막연한 불안감, 야뇨증, 언어적 감정 표현 회피.
-                        </p>
-                        <p class="text-gray-800">
-                            <strong class="text-orange-500"><i class="fa-solid fa-bullseye mr-2"></i> 목표:</strong> 미술 매체를 통해 무의식적 불안감을 표출하고 심리적 안정감 회복.
-                        </p>
-                        <p class="text-gray-800">
-                            <strong class="text-maljaram-accent"><i class="fa-solid fa-check-circle mr-2"></i> 결과:</strong> 미술 치료 후, 아이가 그림 속에서 자신의 감정을 표현하기 시작했으며 야뇨증 증상이 완화되고 심리적 안정감을 찾음.
-                        </p>
+                <!-- Case 4: 자존감 부족 (놀이 치료) -->
+                <div class="review-card bg-white rounded-2xl shadow-lg border-t-4 border-maljaram-accent overflow-hidden">
+                    <div class="review-header p-5 flex justify-between items-center">
+                        <span class="badge bg-maljaram-accent/10 text-maljaram-accent">#자존감</span>
+                        <p class="text-sm font-semibold text-gray-800">이*현 (10세 자녀)</p>
                     </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">케이스 4. "나는 못해"라고 말하던 아이</h3>
+                        <div class="space-y-4">
+                            <div class="border-b pb-3">
+                                <p class="font-bold text-red-500 mb-1 flex items-center"><i class="fa-solid fa-face-frown mr-2"></i> Before (문제점)</p>
+                                <p class="text-gray-700 text-sm">매사에 의욕이 없고, 스스로를 비하하는 말을 자주 함. 새로운 활동을 시도하는 것을 극도로 두려워함.</p>
+                            </div>
+                            <div>
+                                <p class="font-bold text-maljaram-accent mb-1 flex items-center"><i class="fa-solid fa-face-smile-beam mr-2"></i> After (결과)</p>
+                                <p class="text-gray-700 text-sm">치료사와 긍정적 관계를 형성하며 작은 성공 경험을 누적. 자신감을 되찾아 스스로 숙제를 하고 학업에 흥미를 보이기 시작함.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                    <div class="before-after-box mt-6">
-                        <span class="before-text">Before: 불안감 심화</span>
-                        <span class="after-text">After: 심리적 안정</span>
+                <!-- Case 5: 그룹 수업 (사회성 및 규칙 준수) -->
+                <div class="review-card bg-white rounded-2xl shadow-lg border-t-4 border-maljaram-primary overflow-hidden">
+                    <div class="review-header p-5 flex justify-between items-center">
+                        <span class="badge bg-maljaram-primary/10 text-maljaram-primary">#그룹활동</span>
+                        <p class="text-sm font-semibold text-gray-800">박*민 (6세 자녀)</p>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">케이스 5. 규칙 지키기를 어려워하는 아이</h3>
+                        <div class="space-y-4">
+                            <div class="border-b pb-3">
+                                <p class="font-bold text-red-500 mb-1 flex items-center"><i class="fa-solid fa-face-frown mr-2"></i> Before (문제점)</p>
+                                <p class="text-gray-700 text-sm">친구들과 놀 때 자기 마음대로 하려 하고, 차례 지키기(순서)나 규칙 준수에 대한 이해가 부족함.</p>
+                            </div>
+                            <div>
+                                <p class="font-bold text-maljaram-accent mb-1 flex items-center"><i class="fa-solid fa-face-smile-beam mr-2"></i> After (결과)</p>
+                                <p class="text-gray-700 text-sm">그룹 치료를 통해 타인과의 관계에서 규칙이 필요한 이유를 깨닫고, 기다리는 능력과 양보하는 태도가 개선됨.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 6: 미술 수업 (정서 표현 및 안정화) -->
+                <div class="review-card bg-white rounded-2xl shadow-lg border-t-4 border-maljaram-accent overflow-hidden">
+                    <div class="review-header p-5 flex justify-between items-center">
+                        <span class="badge bg-maljaram-accent/10 text-maljaram-accent">#미술치료</span>
+                        <p class="text-sm font-semibold text-gray-800">김*희 (8세 자녀)</p>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">케이스 6. 불안감을 그림으로 표현하던 아이</h3>
+                        <div class="space-y-4">
+                            <div class="border-b pb-3">
+                                <p class="font-bold text-red-500 mb-1 flex items-center"><i class="fa-solid fa-face-frown mr-2"></i> Before (문제점)</p>
+                                <p class="text-gray-700 text-sm">말수가 적고 내성적이며, 그림에서 검은색이나 강한 선을 사용하여 불안감과 스트레스를 표현했음.</p>
+                            </div>
+                            <div>
+                                <p class="font-bold text-maljaram-accent mb-1 flex items-center"><i class="fa-solid fa-face-smile-beam mr-2"></i> After (결과)</p>
+                                <p class="text-gray-700 text-sm">미술 치료 과정을 통해 내면의 감정을 해소하고, 그림 색상이 밝아지고 주제가 긍정적으로 변화하는 등 심리적 안정화가 확인됨.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
             </div>
 
-            <!-- CTA -->
-            <div class="mt-20 text-center">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6">우리 아이의 긍정적인 변화, 말자람터가 함께합니다.</h2>
-                <a href="/maljaram/contact.html" class="inline-flex justify-center items-center px-8 py-4 text-xl font-bold rounded-xl text-white bg-maljaram-accent hover:bg-emerald-600 transition duration-300 shadow-xl transform hover:scale-[1.03] focus:outline-none focus:ring-4 focus:ring-maljaram-accent focus:ring-opacity-50">
-                    <i class="fa-solid fa-calendar-check mr-3"></i>
-                    1:1 초기 상담 예약 신청
-                </a>
+            <!-- 네이버 블로그/CTA Section -->
+            <div class="mt-20 text-center bg-white p-10 rounded-2xl shadow-lg border-t-4 border-maljaram-accent/50">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">우리 아이의 '치유의 발자취'를 함께 시작하세요.</h2>
+                
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    
+                    <!-- 상담 신청 CTA -->
+                    <a href="/maljaram/contact.html" class="inline-flex justify-center items-center px-8 py-4 text-xl font-bold rounded-xl text-white bg-maljaram-accent hover:bg-emerald-600 transition duration-300 shadow-lg transform hover:scale-[1.03]">
+                        <i class="fa-solid fa-calendar-check mr-3"></i>
+                        1:1 초기 상담 예약하기
+                    </a>
+                </div>
             </div>
             
         </div>
     </main>
 
-    <!-- JS for Mobile Menu Toggle --><script>
+    <!-- JS for Mobile Menu Toggle -->
+    <script>
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIconOpen = document.getElementById('menu-icon-open');
